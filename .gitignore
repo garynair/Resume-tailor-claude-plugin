@@ -1,0 +1,22 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# Node (if any local scripts/tooling get added under this folder)
+node_modules/
+npm-debug.log*
+
+# Temporary/working files
+*.tmp
+*.bak
+~$*
+
+# Personal data should never live inside the plugin folder itself,
+# but ignore it here too as a safety net in case it's ever copied in
+# by mistake — this plugin's user-data/ lives as a sibling directory,
+# outside this repo, and should stay that way.
+user-data/
