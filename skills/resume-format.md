@@ -11,6 +11,16 @@ instruction that edits this file directly; `template-extractor` may
 flag structural drift observed in newly added source resumes, but never
 auto-applies a change here (see `agents/template-extractor.md`).
 
+**2026-07-29 drift review**: `template-extractor` flagged that several
+recent source resumes had drifted to justified body text, client names
+on the company/location line instead of a dedicated line, and Education
+before Certifications. Candidate reviewed all three and confirmed the
+existing spec below is correct on all counts (left-aligned, dedicated
+italic client-name line, Certifications before Education); the drifted
+recent resumes were the ones out of spec, not this file. No rule changed.
+Do not re-flag these three as open drift on future `/build-reference`
+runs unless a new pattern emerges beyond what was already reviewed here.
+
 ## Page setup
 
 - Margins: 0.75" on all four sides.

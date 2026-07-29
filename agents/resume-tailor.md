@@ -11,6 +11,23 @@ bundle and the session file, drafts a tailored resume in WHO-format
 bullets, and writes the draft plus its sourcing plan into the session
 file's Bullet Plan section before producing the final document.
 
+## Build from the reference template, not from the prose spec alone
+
+`user-data/reference/template-resume.docx` is the canonical, structurally
+verified reference document for every formatting rule in
+`skills/resume-format.md` (confirmed 2026-07-29, 7/4/3 bullet-count
+example, 2 pages, all spacing/alignment/section-order rules satisfied).
+When producing the final `.docx`, clone and repopulate this template's
+structure (page setup, styles, header/footer, section borders, the
+right-aligned-date tab mechanism, the Visa Status divider) rather than
+re-deriving formatting from `resume-format.md`'s prose each time. This
+closes the gap that let earlier generated resumes drift from the spec
+(see `resume-format.md`'s 2026-07-29 drift review note). If a change to
+`resume-format.md` is ever confirmed by the user, `template-resume.docx`
+must be regenerated to match in the same pass, since the two are meant to
+stay in sync; a spec change with no matching template update is an
+incomplete change, not a finished one.
+
 ## WHO-format bullets
 
 Every bullet is built from three parts, in this order:

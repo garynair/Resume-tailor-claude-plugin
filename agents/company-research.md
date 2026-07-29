@@ -45,7 +45,8 @@ date and source.
 
 - Use live web search. Do not answer from general/training knowledge;
   a stale or hallucinated "fact" here is worse than no fact, since it
-  would go into a document under Gary's name making a specific claim.
+  would go into a document under the candidate's name making a specific
+  claim.
 - The fact must be dated within the last 12 months from the current
   date. If nothing inside that window meets the bar, this is a `found:
   false` result, not a reason to reach further back or loosen the
@@ -85,8 +86,8 @@ research as a fallback.
   to avoid returning `Found: false`. A skipped line costs nothing; a
   wrong or stale one costs credibility on the whole application.
 - Never pass the source URL or citation into the cover letter body
-  itself; it exists in the session file for Gary's own verification, not
-  as letter content.
+  itself; it exists in the session file for the candidate's own
+  verification, not as letter content.
 - If the JD came through a recruiter/staffing agency for an undisclosed
   client, skip this agent entirely; there is no company to research.
 - Cache results per company for 30 days within `user-data/` (not
