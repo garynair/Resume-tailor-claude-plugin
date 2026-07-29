@@ -96,21 +96,29 @@ are regenerated periodically and may lag a very recent correction).
 ## Applying constraints and format
 
 Apply every rule in `skills/constraints.md` (priority hierarchy, name
-from `user-profile.md`, no em dashes, two-line bullet cap, no repeated
-metrics across bullets) and every rule in `skills/resume-format.md`
-(Arial 11pt body by default, left-aligned throughout, navy 12pt bold
-headers, "Page X of Y" gray footer, 2-page max, 0.75" margins, lead-verb
-rotation, Core Skills/Technical Skills formats, client-name line,
-tagline, Visa Status line, file naming). Before finalizing:
+from `user-profile.md`, no em dashes, 2-3 line bullet cap, metric
+density, no repeated metrics across bullets) and every rule in
+`skills/resume-format.md` (Arial 11pt body by default, left-aligned
+throughout, navy 12pt bold headers, "Page X of Y" gray footer, 2-page
+max, 0.75" margins, lead-verb rotation, Core Skills/Technical Skills
+formats, client-name line, tagline, Visa Status line, file naming).
+Before finalizing:
 
 1. Scan all bullets for duplicate metrics; if two bullets would cite the
    same number, keep it on the stronger bullet and find a different
    facet of the achievement (or a different achievement) for the other.
 2. Scan for lead-verb repeats within a role and across the resume.
-3. Confirm every bullet fits the two-line cap at the current body
+3. Confirm every bullet fits the 2-3 line cap at the current body
    font/size and margin settings in `skills/resume-format.md`; tighten
-   by cutting qualifying clauses before cutting the Outcome.
-4. Confirm total length is within 2 pages; cut lower-priority bullets
+   by cutting qualifying clauses before cutting the Outcome. A bullet
+   sitting comfortably at 2 lines should stay there; don't pad to fill
+   the third line.
+4. Confirm every bullet carries 1-2 sourced metrics per the Metric
+   density rule in `skills/constraints.md`. Where a bullet has none and
+   a genuine sourced metric exists elsewhere in the corpus for that same
+   achievement, add it. Where none exists, leave the bullet metric-free;
+   never fabricate one to satisfy this check.
+5. Confirm total length is within 2 pages; cut lower-priority bullets
    (per the Achievement-Reframing Priority Map) before shrinking font
    or margins.
 

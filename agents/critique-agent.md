@@ -85,9 +85,9 @@ black box):
 |---|---|---|
 | Accuracy/traceability | 30% | Every claim sourced; no unresolved sourcing failures |
 | Relevance to JD | 25% | Requirement Mapping MATCH items are visible and prominent |
-| Impact/specificity | 20% | Bullets lead with outcome, not just activity; vault metrics used where available |
+| Impact/specificity | 20% | Bullets lead with outcome, not just activity; vault metrics used where available; each bullet carries 1-2 sourced metrics per `skills/constraints.md`'s Metric density rule, with no fabricated metric added just to satisfy it |
 | ATS compliance | 15% | Format spec followed exactly; keyword match present |
-| Readability/brevity | 10% | Two-line cap held; no filler; 2-page max; cover letter in the 180-220 word range |
+| Readability/brevity | 10% | 2-3 line cap held (2 lines preferred, no padding to fill a third); no filler; 2-page max; cover letter in the 180-220 word range |
 
 A sourcing failure on any bullet caps the Accuracy/traceability score at
 2/5 regardless of how many other bullets are clean, since one unsourced

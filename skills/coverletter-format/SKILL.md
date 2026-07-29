@@ -91,9 +91,18 @@ short.
      in the address block above; it is never restated in the body
      paragraphs below (this is separate from, and in addition to, the
      no-client-names rule for third-party clients/customers below).
-2. **Opening (1-2 sentences)**: state the role and, in one sentence, the
-   single strongest reason this candidate fits it. No "I am writing to
-   apply for..." throat-clearing.
+2. **Opening (1-2 sentences, up to 3 with the Company Signal Line)**:
+   state the role and, in one sentence, the single strongest reason this
+   candidate fits it. No "I am writing to apply for..." throat-clearing.
+   Optionally, a third sentence may add one **Company Signal Line**: a
+   specific, dated, verifiable fact about the target company (recent
+   funding, M&A, a regulatory action, a breach disclosure, a new
+   compliance mandate, a leadership hire in security/risk/compliance,
+   earnings-call commentary on risk/compliance investment) connected
+   directly to why the candidate's GRC background is relevant to it
+   right now. Never a generic "I admire your innovative culture" line;
+   it must name a specific, checkable event. See Company Signal Line
+   sourcing rules below.
 3. **Body (2 short paragraphs, or 1 paragraph plus 2-3 tight bullets)**:
    2-3 accomplishments drawn directly from the corpus/reference files,
    each tied to a requirement in the job description. Every metric here
@@ -125,6 +134,25 @@ either. So the body of the letter names neither the candidate's former
 clients nor the hiring company/recruiter itself; both live outside the
 body (former employers stay nameable, hiring company/recruiter lives in
 the header only).
+
+## Company Signal Line (sourcing rules)
+
+- Sourced only from `company-research`'s output in the session file's
+  Company Research section, never generated fresh by `coverletter-writer`
+  from training knowledge or recalled from memory. If that section shows
+  `Found: false`, or doesn't exist at all, omit the line entirely; do
+  not fall back to a vague or unverifiable claim to fill the space.
+- Must be dated within the last 12 months per `company-research`'s own
+  window; this agent does not re-loosen that window at drafting time.
+- Must be paired with a one-clause bridge to GRC relevance in the same
+  sentence (ties to TPRM, AI governance, regulatory exposure, audit
+  readiness, or similar), not stated as a standalone trivia fact.
+- Counts toward the 180-220 word body limit; it is not a bonus
+  paragraph exempt from the length rule.
+- The `Source`/citation itself never appears in the letter body; it
+  exists only in the session file for the candidate's own verification.
+- If the job posting is via an undisclosed-client recruiter, there is no
+  company to research; this feature does not apply to that letter.
 
 ## No defensive "objection" paragraphs
 

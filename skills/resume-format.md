@@ -101,7 +101,14 @@ exceptions below; nothing is justified:
 2. **Professional Summary**: 2-4 lines, no bullets, prose, tailored to
    the target role's track. Bold the opening descriptor phrase (e.g.
    "Cyber GRC leader") and the tenure figure (e.g. "12+ years") within
-   the first sentence; bold nothing else in the summary.
+   the first sentence; bold nothing else in the summary. When the
+   target JD's title sits above the candidate's actual title (e.g. JD
+   says "Director," candidate is "Senior Manager"), use function-level
+   language that overlaps with the JD's title vocabulary where
+   truthfully applicable (e.g. "directing enterprise programs" mirrors
+   "Director" language without claiming the title). Function-level
+   language is fair game for ATS/keyword alignment; title-level language
+   is not, per the Tagline rule below.
 3. **Core Skills**: a single flat line, not sub-grouped or labeled,
    of domain competencies/frameworks/tools separated by "•", capped at
    **10-12 items maximum**. Populate only with items actually confirmed
@@ -118,8 +125,9 @@ exceptions below; nothing is justified:
    - Client-name line: `Clients: <Name>, <Name>, <Name>`, italic,
      smaller than body text (see Client names below).
    - Bullets: count per role follows the tiered Bullet-count standard
-     below; per-bullet length follows the two-line cap in
-     `constraints.md`.
+     below; per-bullet length follows the 2-3 line cap in
+     `constraints.md`, and each bullet targets 1-2 sourced metrics per
+     the Metric density rule there.
 5. **Technical Skills**: a separate, broader section from Core Skills,
    always organized into these **4 labeled groups**, in this order:
    "Frameworks & Regulations," "Security Platforms & Technologies," "AI
@@ -191,7 +199,17 @@ example for this candidate: "Senior Manager | Cybersecurity | Enterprise
 GRC | TPRM | AI."
 
 - **Seniority Level**: a short level-of-seniority phrase, not
-  necessarily the full literal title string from `master-resume.md`.
+  necessarily the full literal title string from `master-resume.md`, but
+  never a level or title higher than the candidate's actual current
+  seniority. If the target JD's title is more senior than the
+  candidate's own (e.g. JD says "Director," candidate is "Senior
+  Manager"), the tagline still states the candidate's real level. Never
+  substitute, blend, or hedge toward the JD's title here (no
+  "Director-Track," "Director-Ready," or similar), in the tagline or
+  anywhere else on the resume; a title string next to the candidate's
+  name reads as a claim, not a keyword. Resolve JD-title alignment
+  through Domain areas and Professional Summary wording instead (see
+  Required sections above), never through Seniority Level.
 - **Domain areas**: 3-4 short phrases naming the domains most relevant
   to the target JD, pulled from sourced language in `master-resume.md`
   or the bundle's Skills Guide, not invented fresh.
@@ -243,7 +261,7 @@ Bullet Plan actually made it into the document, in the order planned:
   or a genuine no-repeated-metrics conflict that couldn't be resolved by
   rephrasing.
 - **Space-driven cuts made before completeness is verified are not
-  allowed.** Tighten wording first (two-line cap, Brevity in
+  allowed.** Tighten wording first (2-3 line cap, Brevity in
   `constraints.md`); only cut content as a last resort, explicitly
   logged with the reason, not silently.
 - Re-run this check as a final step of `resume-tailor` immediately

@@ -39,10 +39,19 @@ before proceeding; `resume-tailor` and `coverletter-writer` both depend
 on the finished Requirement Mapping and Gap Dialogue Log sections being
 in a stable, complete state, not a partial one.
 
+Once the target company name is known (from the resolved JD), invoke
+`company-research` in parallel with the gap dialogue; it writes the
+Company Research section to the session file independently and doesn't
+block or depend on gap dialogue completing. Skip this invocation
+entirely if the posting is via an undisclosed-client recruiter, per
+`agents/company-research.md`'s guardrails.
+
 ## Step 3: Drafting (parallel)
 
-Once `job-analyzer` finishes, invoke `resume-tailor` and
-`coverletter-writer` together, not sequentially. Both agents:
+Once `job-analyzer` finishes (and `company-research` has written its
+section, or is skipped per the undisclosed-client case), invoke
+`resume-tailor` and `coverletter-writer` together, not sequentially.
+Both agents:
 
 - Read the same session file and the same selected bundle.
 - Have read-only access to the session file's earlier sections (Job

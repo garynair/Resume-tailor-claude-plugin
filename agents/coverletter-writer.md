@@ -47,11 +47,29 @@ facet of the same achievement, or use a different achievement, instead.
 Apply `skills/coverletter-format.md` exactly:
 
 - ~200 words (180-220 range), body text only.
-- Structure: opening (role + single strongest fit reason), body (2-3
-  sourced accomplishments tied to JD requirements, pulled from the
-  bundle's Cover-Letter Guide, prioritizing stories tagged for JD themes
-  that `job-analyzer` identified as MATCH or resolved PARTIAL/GAP items),
+- Structure: opening (role + single strongest fit reason, optionally
+  followed by the Company Signal Line, see below), body (2-3 sourced
+  accomplishments tied to JD requirements, pulled from the bundle's
+  Cover-Letter Guide, prioritizing stories tagged for JD themes that
+  `job-analyzer` identified as MATCH or resolved PARTIAL/GAP items),
   closing (confident, forward-looking).
+
+## Company Signal Line
+
+Before drafting the opening, check the session file's Company Research
+section (written by `company-research`):
+
+- If `Found: true`, the opening may include a third sentence stating the
+  `Fact` and bridging it to GRC relevance using the `GRC relevance`
+  clause, per the Company Signal Line rule in
+  `skills/coverletter-format.md`. This sentence counts toward the
+  180-220 word body limit.
+- If `Found: false`, or the section doesn't exist (undisclosed-client
+  recruiter posting), omit the line entirely. Do not attempt to recall
+  or infer a company fact independently as a fallback; this agent has
+  no web-search or sourcing authority of its own for this purpose.
+- Never restate the `Source` field anywhere in the letter; it exists
+  only for the candidate's own verification in the session file.
 - No client names in the body (candidate's own past employers are fine;
   the employers' clients/customers are not, even if named in the
   corpus).

@@ -50,15 +50,41 @@ any double hyphen standing in for one. This rule exists because em dash
 density is one of the more reliable AI-generated-text signals (see
 `ai-fingerprint-checklist.md`), and Big4-style resumes don't use them either.
 
-## Two-line bullet cap
+## Bullet length cap (2-3 lines)
 
-Every resume bullet must fit on two lines or fewer at the target font size
-and margins (see `resume-format.md`). If a bullet runs to a third line:
+Every resume bullet must fit on **2-3 lines** at the target font size and
+margins (see `resume-format.md`); 2 lines is the target, 3 is the ceiling,
+not the goal. If a bullet runs past 3 lines:
 
 - Cut qualifying clauses before cutting the metric or the outcome.
 - Split into two bullets only if both halves are independently
   bullet-worthy (each has its own action plus result); otherwise, tighten.
 - Never shrink font size or widen margins just to force a fit.
+
+Don't use the extra third line as license to pad; a bullet that fits
+comfortably in 2 lines should stay at 2. The extra room exists for cases
+where fitting a required metric or qualifying detail (see Metric density
+below) would otherwise force an artificial cut.
+
+## Metric density (at least 1, at most 2 per bullet)
+
+Every bullet should carry **at least 1 sourced metric** (a number,
+percentage, dollar figure, headcount, or timeframe) and **no more than
+2**. Two is acceptable only when both are genuinely different facets of
+the same achievement (e.g., "reduced repeat findings 38% YoY across 5
+business units" pairs an outcome metric with a scope metric); never two
+instances of what's effectively the same figure restated.
+
+This is a **preference, not a license to fabricate**. Per the No
+Fabrication rule below, if a bullet's underlying achievement genuinely
+has no sourced metric in `master-resume.md`, `master-metrics-vault.md`,
+or an approved gap-dialogue answer, the bullet stays metric-free rather
+than inventing one. When choosing which bullets make the cut for a role
+(see the Bullet-count standard in `resume-format.md`), prefer bullets
+that do carry a sourced metric over otherwise-comparable bullets that
+don't, all else being equal on relevance and impact; but a strong,
+accurate, metric-free bullet still beats a weaker or fabricated one, per
+the Accuracy-first priority hierarchy above.
 
 ## No repeated metrics across bullets
 

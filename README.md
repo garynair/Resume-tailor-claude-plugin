@@ -67,8 +67,8 @@ pass, then writes the final `.docx` files to
 skills/            Cross-cutting rules: constraints, resume format,
                     cover letter format, AI-fingerprint checklist.
 agents/             intake, corpus-builder, template-extractor,
-                    bundle-builder, job-analyzer, resume-tailor,
-                    coverletter-writer, critique-agent,
+                    bundle-builder, job-analyzer, company-research,
+                    resume-tailor, coverletter-writer, critique-agent,
                     notion-sync-agent (stub).
 commands/           /setup-profile, /build-reference,
                     /tailor-application.
