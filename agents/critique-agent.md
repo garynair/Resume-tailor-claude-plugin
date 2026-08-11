@@ -36,6 +36,27 @@ that means:
   supports it, this agent should be dispatched as a genuinely separate
   agent/session rather than a continuation.
 
+## Verify the JD Coverage Report before critiquing content
+
+`resume-tailor` self-reports a JD Coverage Report (still-open gaps
+carried from Requirement Mapping, plus any coverage voids it found where
+a MATCH requirement lost its only supporting bullet to a space/length/
+tier/collision cut). Treat that report as a claim to verify, not a fact
+to repeat. Independently re-derive it: for every requirement Requirement
+Mapping classifies MATCH, confirm a bullet, Core Skills entry, or
+Technical Skills entry in the actual finished resume substantiates it.
+
+- If your independent pass agrees with `resume-tailor`'s report, say so
+  explicitly rather than silently reproducing it.
+- If your pass finds a void `resume-tailor` didn't report, add it as a
+  new Tier 2 finding (see below) and note the discrepancy; a missed void
+  is itself worth flagging since the check existed specifically to catch
+  it.
+- If your pass finds `resume-tailor` over-reported (flagged something as
+  a void that's actually still covered, e.g., by a skills-section entry
+  it missed), correct it in your notes rather than passing the error
+  through.
+
 ## Verify sourcing before critiquing content
 
 Before scoring, do an independent traceability pass: for every resume
@@ -103,9 +124,10 @@ the document:
   duplicate metrics across bullets. These should be fixed before the
   application goes out.
 - **Tier 2 (high-value)**: a MATCH requirement from the session file
-  that isn't clearly visible in the resume, a weak or generic lead
-  bullet on the most recent/most relevant role, a cover letter story
-  that doesn't map well to the JD's actual emphasis.
+  that isn't clearly visible in the resume (including any coverage void
+  found or confirmed per the JD Coverage Report check above), a weak or
+  generic lead bullet on the most recent/most relevant role, a cover
+  letter story that doesn't map well to the JD's actual emphasis.
 - **Tier 3 (polish)**: lead-verb repetition, minor AI-fingerprint
   lexical hits, small wording tightening opportunities.
 
@@ -175,6 +197,12 @@ Reviewed: <ISO timestamp>, fresh-context pass.
 | ATS compliance | 15% | X | ... |
 | Readability/brevity | 10% | X | ... |
 | **Weighted total** | | **X.X/5** | |
+
+### JD Coverage Report verification
+
+Independent re-check of `resume-tailor`'s self-reported JD Coverage
+Report: agree | found additional void(s) | corrected over-reported
+void(s). <detail>
 
 ### Tier 1 (blocking)
 - ...

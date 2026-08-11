@@ -83,6 +83,14 @@ Each agent produces its output document once drafting is finalized:
 
 (folder slug matches the session file's `<company>_<role>` naming).
 
+Before producing its `.docx`, `resume-tailor` also runs its mandatory
+Requirement coverage check and writes the session file's JD Coverage
+Report section (still-open gaps carried from Requirement Mapping, plus
+any coverage voids caused by bullets dropped for space/length/tier/
+collision reasons during this drafting pass; see
+`agents/resume-tailor.md`). This report is what Step 5 surfaces to the
+user below.
+
 ## Step 4: Critique (fresh context)
 
 Invoke `critique-agent` only after both drafts are complete and their
@@ -114,7 +122,31 @@ After critique completes:
    documents in `user-data/output/<company>_<role>/` are current (i.e.,
    if a revision pass ran, the `.docx` files reflect the revised
    content, not the pre-critique draft).
-3. Present the session file location and the output folder (session
+3. **Present the JD Coverage Report to the user, unprompted, every time**
+   (the same way critique-agent's Standing Confirmation block is always
+   shown, not just when asked). Pull this from the session file's JD
+   Coverage Report section, cross-checked against critique-agent's JD
+   Coverage Report verification note:
+   - **Still-open gaps**: the requirements that never got resolved to a
+     citable MATCH, carried forward from Requirement Mapping/Gap Dialogue
+     Log. The user has already seen most of these during gap dialogue,
+     but restate them here as a single final list rather than making the
+     user reconstruct it from the dialogue transcript.
+   - **Coverage voids introduced by drafting**: any requirement that
+     Requirement Mapping called MATCH but that ended up with no
+     surviving bullet or skills entry in the final document because of a
+     space/length/tier/collision cut made during drafting. This is new
+     information the user has not seen before this point; call it out
+     distinctly from the still-open gaps list, since it means something
+     the candidate actually has evidence for isn't currently showing up
+     in the document, not that the evidence never existed.
+   If critique-agent's verification note disagrees with `resume-tailor`'s
+   self-report (found an additional void, or corrected an over-reported
+   one), present critique-agent's corrected version, not the original.
+   If both lists are genuinely empty, say so explicitly ("no still-open
+   gaps, no coverage voids") rather than skipping this step because
+   there's nothing to report.
+4. Present the session file location and the output folder (session
    file, JD Details document, resume, cover letter) to the user as the
    deliverable, along with a short summary of Tier 2/3 findings they may
    want to act on but that aren't blocking.
@@ -144,3 +176,8 @@ this gate rather than wiring the agent in as a workaround.
 - Never treat a Tier 1 finding as optional polish; it must be resolved or
   explicitly acknowledged by the user as accepted risk before the
   application is called done.
+- Never omit the JD Coverage Report from Step 5 reporting, even when it's
+  empty on both lists; a resume that silently dropped coverage for a
+  requirement the candidate actually has evidence for is exactly the
+  failure mode this step exists to catch, and it only works if it runs
+  and is shown every time, not only when something looks off.

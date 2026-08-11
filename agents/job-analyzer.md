@@ -58,6 +58,10 @@ Created: <ISO timestamp>
 ## Bullet Plan
 (pending : filled by resume-tailor)
 
+## JD Coverage Report
+(pending : filled by resume-tailor, immediately after Bullet Plan is
+finalized; independently re-verified, not regenerated, by critique-agent)
+
 ## Cover Letter Plan
 (pending : filled by coverletter-writer)
 

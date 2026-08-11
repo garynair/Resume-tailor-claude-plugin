@@ -151,10 +151,86 @@ a different alignment), that is a change to `skills/resume-format.md`
 itself, made through an explicit user instruction, not a per-application
 judgment call made inside this agent's drafting pass.
 
+## Requirement coverage check (mandatory, before finalizing)
+
+Bullets get dropped for several legitimate reasons: the tiered
+Bullet-count standard (7 current-role / 3-4 other-role cap in
+`resume-format.md`), the 2-3 line length cap, the 2-page overall cap, or
+a metric-collision/data-conflict resolution in `constraints.md`. Each of
+these is a correct, individually-justified decision. But a sequence of
+correct individual drops can still add up to a real problem: a JD
+requirement that Requirement Mapping classified MATCH can end up with no
+surviving bullet in the final draft, silently, because each drop looked
+fine in isolation and nobody checked the aggregate effect against the JD.
+That is a coverage void, and it must be surfaced, not just implied by the
+absence of a bullet.
+
+Run this check after bullet selection is finalized (all tiers/caps
+applied, all metric collisions resolved) but before producing the
+`.docx`:
+
+1. Build the set of JD requirements Requirement Mapping classified
+   MATCH (and any PARTIAL/GAP that gap dialogue resolved to a citable
+   MATCH-equivalent).
+2. For each one, confirm at least one bullet, Core Skills entry, or
+   Technical Skills entry that survives into the final draft actually
+   substantiates it. A requirement satisfied only by a bullet that got
+   cut for space, length, tier count, or a metric-collision resolution
+   that removed the bullet entirely (not just the number) now has zero
+   coverage in the document, even though Requirement Mapping still says
+   MATCH.
+3. Anything that fails step 2 is a **coverage void**: write it to the
+   session file's JD Coverage Report section (below), naming the
+   requirement, which bullet used to cover it, why that bullet was
+   dropped, and whether the requirement is now fully uncovered or only
+   partially covered by a thinner remaining signal (e.g., a Core Skills
+   tag with no supporting bullet).
+4. A coverage void is not automatically a reason to restore the dropped
+   bullet; restoring it may just move the problem (push the page count
+   over 2, or bump a different bullet out and create a new void
+   elsewhere). Report the void; do not silently resolve it by
+   overriding the Bullet-count standard or the 2-page cap on your own
+   initiative. If restoring is clearly the right call (e.g., swapping
+   out a lower-priority bullet elsewhere with headroom to spare), make
+   that swap and log it as a resolved void rather than an open one.
+
+This check is about requirements Requirement Mapping already called
+MATCH losing their coverage through drafting-stage cuts. It is not a
+re-run of `job-analyzer`'s classification and does not touch GAP/PARTIAL
+items that were never resolved to MATCH in the first place; those stay
+exactly as `job-analyzer` and the Gap Dialogue Log left them and are
+carried forward into the report's first list unchanged (see below).
+
 ## Output
 
 - Write the sourcing plan to the session file's Bullet Plan section
   (above).
+- Write the session file's JD Coverage Report section, in this format:
+
+  ```markdown
+  ## JD Coverage Report
+
+  ### Still-open gaps (per Requirement Mapping / Gap Dialogue Log)
+  - <requirement text> : <GAP | PARTIAL | excluded-gap> : <one-line
+    reason, cross-referenced to the relevant Gap Dialogue Log entry if
+    one exists>
+
+  ### Coverage voids introduced by drafting
+  - <requirement text> : previously MATCH via "<bullet text or
+    Core/Technical Skills entry>" (<source>), dropped for <space | length
+    cap | tier cap | metric-collision>, and no other bullet or skills
+    entry in the final draft covers this requirement. <fully uncovered |
+    partially covered by: <what remains>>
+
+  If either list is empty, write "None." under that heading rather than
+  omitting it. If a void was resolved by swapping bullets rather than
+  left open, list it under Coverage voids with "(resolved: swapped in
+  '<bullet>')" appended instead of removing it from the report.
+  ```
+
+  The first list is a direct carry-forward from Requirement Mapping and
+  the Gap Dialogue Log (read-only source, not re-derived); the second
+  list is this agent's own finding from the coverage check above.
 - Produce the resume document itself (per the docx skill and
   `skills/resume-format.md`) to
   `user-data/output/<company>_<role>/resume.docx` (create the folder if
@@ -167,7 +243,8 @@ judgment call made inside this agent's drafting pass.
 
 - No drafting authority over the session file's earlier sections
   (Job Description, Track Selection, Requirement Mapping, Gap Dialogue
-  Log); this agent only reads those and writes to Bullet Plan.
+  Log); this agent only reads those and writes to Bullet Plan and JD
+  Coverage Report.
 - Never resolve a GAP or PARTIAL requirement on its own initiative; if
   `job-analyzer` left something unresolved, surface it rather than
   silently deciding it's fine to imply anyway.
@@ -175,3 +252,8 @@ judgment call made inside this agent's drafting pass.
   `corrections-log.md` directly; if this run's gap dialogue produced
   something worth promoting into those files, note the suggestion in the
   session file for the next `/build-reference` pass.
+- Never produce the final `.docx` before the Requirement coverage check
+  has run and the JD Coverage Report section is written, even if every
+  individual drop decision felt obviously fine at the time; the whole
+  point of the check is to catch effects that aren't obvious from any
+  single decision.
