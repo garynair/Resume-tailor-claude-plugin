@@ -1,5 +1,7 @@
 {
   "name": "resume-tailor-marketplace",
+  "source": "...",
+  "version": "0.1.1"
   "owner": { "name": "gary" },
   "description": "Local marketplace for the Resume-Tailor plugin.",
   "plugins": [
