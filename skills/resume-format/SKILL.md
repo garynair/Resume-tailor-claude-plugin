@@ -1,6 +1,6 @@
 ---
 name: resume-format
-description: Authoritative resume formatting spec: page setup, typography, alignment, required section order, Core Skills/Technical Skills formats, tagline, client-name line, bullet-count tiers, Visa Status line, and file naming convention.
+description: "Authoritative resume formatting spec: page setup, typography, alignment, required section order, Core Skills/Technical Skills formats, tagline, client-name line, bullet-count tiers, Visa Status line, and file naming convention."
 ---
 
 # Resume Format

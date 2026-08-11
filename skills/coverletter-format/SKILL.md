@@ -1,6 +1,6 @@
 ---
 name: coverletter-format
-description: Authoritative cover letter formatting spec: length, structure, header block, no client names in body, no defensive objection paragraphs, tone, and file naming convention.
+description: "Authoritative cover letter formatting spec: length, structure, header block, no client names in body, no defensive objection paragraphs, tone, and file naming convention."
 ---
 
 # Cover Letter Format

@@ -7,8 +7,8 @@ status: active
 
 Runs a full application-tailoring pass for one job description: analysis,
 gap dialogue, drafting, and independent critique. Produces a session
-file (single source of truth for the run) and a final resume + cover
-letter in `user-data/output/<company>_<role>/`.
+file (single source of truth for the run), a JD Details document, and a
+final resume + cover letter in `user-data/output/<company>_<role>/`.
 
 ## Step 1: Precondition check
 
@@ -28,6 +28,11 @@ Invoke `job-analyzer` with the JD or URL the user provided. This agent:
 
 - Resolves the JD text and creates
   `user-data/applications/session_<company>_<role>.md`.
+- Writes a standalone JD Details document
+  (`user-data/output/<company>_<role>/<Name>_<Company>_<Role>_JD.docx`)
+  capturing Designation, Company, Location, OnSite/Remote, Compensation,
+  and JD Link, followed by the full JD text as inputted. See
+  `agents/job-analyzer.md` Step 3.
 - Applies the JD-keyword-to-track decision tree to select the target
   bundle (and secondary track, if applicable).
 - Maps every JD requirement to MATCH/PARTIAL/GAP against the bundle.
@@ -109,9 +114,10 @@ After critique completes:
    documents in `user-data/output/<company>_<role>/` are current (i.e.,
    if a revision pass ran, the `.docx` files reflect the revised
    content, not the pre-critique draft).
-3. Present the session file location and the output folder to the user
-   as the deliverable, along with a short summary of Tier 2/3 findings
-   they may want to act on but that aren't blocking.
+3. Present the session file location and the output folder (session
+   file, JD Details document, resume, cover letter) to the user as the
+   deliverable, along with a short summary of Tier 2/3 findings they may
+   want to act on but that aren't blocking.
 
 ## Notion sync
 

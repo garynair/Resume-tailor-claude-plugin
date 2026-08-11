@@ -1,6 +1,6 @@
 ---
 name: constraints
-description: Cross-cutting non-negotiable rules for the Resume-Tailor plugin: priority hierarchy, name sourcing, no em dashes, bullet-length cap, no repeated metrics, data-conflict protocol, metric-collision tiebreak, cover letter length, no fabrication.
+description: "Cross-cutting non-negotiable rules for the Resume-Tailor plugin: priority hierarchy, name sourcing, no em dashes, bullet-length cap, no repeated metrics, data-conflict protocol, metric-collision tiebreak, cover letter length, no fabrication."
 ---
 
 # Constraints

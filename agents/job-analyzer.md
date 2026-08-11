@@ -24,6 +24,13 @@ creates.
   requirements/responsibilities text. Company + role title becomes the
   session filename slug (`session_<company>_<role>.md`, lowercase,
   spaces to underscores, no special characters).
+- Also extract, as stated in the posting (never inferred or guessed):
+  designation/title, location, onsite/remote/hybrid detail, and
+  compensation/salary range. If any of these isn't stated in the JD as
+  given, record it as "Not specified in JD" rather than leaving it
+  blank or filling in a plausible-sounding value.
+- Record the JD link: the URL if one was given, or "Provided as pasted
+  text (no URL given)" if the user pasted raw text.
 
 ## Step 2: Create the session file
 
@@ -63,7 +70,50 @@ Every subsequent step in this agent, and every downstream agent in the
 rather than creating a second file. This session file is the single
 source of truth for the application.
 
-## Step 3: JD-keyword-to-track decision tree
+## Step 3: Write the JD Details document
+
+Immediately after the session file is created, write a standalone Word
+document capturing the JD exactly as inputted, so the candidate has a
+portable record independent of the session file. Save it to
+`user-data/output/<company>_<role>/` (the same output folder
+`resume-tailor` and `coverletter-writer` will use), named:
+
+```
+<Name>_<ClientOrCompany>_<JobRole>_JD.docx
+```
+
+using the same `<Name>`/`<ClientOrCompany>`/`<JobRole>` conventions as
+`resume-format.md`'s File naming convention section (candidate name from
+`user-profile.md`, company or recruiter/agency name if undisclosed-client,
+filename-safe job title).
+
+Document content, in this order, plain formatting (Arial, 11pt body,
+bold labels; no need to follow the full resume/cover-letter formatting
+spec since this is a reference document, not a resume or cover letter):
+
+```
+JD: <Company> — <Role Title>
+
+Designation: <role title, or "Not specified in JD">
+Company: <company name>
+Location: <location, or "Not specified in JD">
+OnSite/Remote: <onsite/remote/hybrid detail, or "Not specified in JD">
+Compensation: <compensation/salary range, or "Not specified in JD">
+JD Link: <URL, or "Provided as pasted text (no URL given)">
+
+---
+
+<full JD text, exactly as inputted or fetched, unedited>
+```
+
+Use the field values captured in Step 1. Never fabricate a value for a
+field the JD didn't state; "Not specified in JD" is always the correct
+fallback per the No Fabrication rule in `constraints.md`. This document
+is descriptive only, not a tailored deliverable, so none of
+`resume-format.md`'s or `coverletter-format.md`'s structural rules
+(bullet counts, tagline, section order, etc.) apply to it.
+
+## Step 4: JD-keyword-to-track decision tree
 
 Extract keywords and themes from the JD (frameworks named, day-to-day
 verbs used, team/reporting structure implied, seniority signals) and
@@ -114,7 +164,7 @@ to win on density alone.
    the session file's Track Selection section, including the secondary
    track if applicable.
 
-## Step 4: Requirement mapping
+## Step 5: Requirement mapping
 
 List every distinct requirement/qualification stated in the JD as its
 own line item (split compound requirements into separate lines; don't
@@ -148,7 +198,7 @@ section:
 | NIST AI RMF experience | GAP | not present in corpus |
 ```
 
-## Step 5: Gap dialogue
+## Step 6: Gap dialogue
 
 For every PARTIAL and GAP requirement, ask the user a closed-ended
 question, one at a time, rather than an open-ended "tell me about X."
@@ -183,7 +233,7 @@ timestamp:
   <confirmed as-is | corrected to "..." | unfilled>
 ```
 
-## Step 6: Handoff
+## Step 7: Handoff
 
 Once requirement mapping and gap dialogue are complete, the session file
 has everything `resume-tailor` and `coverletter-writer` need: track,
@@ -208,3 +258,9 @@ analysis and gap-filling.
 - If the JD itself is vague or missing a requirements section entirely,
   say so and ask the user for the actual requirements text rather than
   inventing a plausible-sounding requirement list.
+- Never guess a value for Designation, Location, OnSite/Remote, or
+  Compensation when the JD doesn't state it; use "Not specified in JD"
+  rather than inferring a plausible-sounding figure.
+- The JD Details document (Step 3) is written once, from the JD as
+  originally given; it is not re-tailored or edited later in the flow
+  the way the resume and cover letter are.

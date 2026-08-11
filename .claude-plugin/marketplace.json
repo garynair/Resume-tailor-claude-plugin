@@ -1,0 +1,12 @@
+{
+  "name": "resume-tailor-marketplace",
+  "owner": { "name": "gary" },
+  "description": "Local marketplace for the Resume-Tailor plugin.",
+  "plugins": [
+    {
+      "name": "resume-tailor-plugin",
+      "source": "./",
+      "description": "Human-in-the-loop resume and cover letter tailoring system. Companion to an existing automated job-application pipeline; used for higher-stakes applications requiring gap dialogue and manual QA."
+    }
+  ]
+}
