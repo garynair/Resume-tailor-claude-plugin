@@ -191,6 +191,30 @@ Priority Map, and Skills Guide, and classify:
 - **GAP** : nothing in the bundle or master-resume.md speaks to it at
   all.
 
+### Step 5a: Resolve static profile-fact requirements first
+
+Before checking the bundle, check whether a requirement is actually a
+static candidate fact already captured in `user-profile.md`
+(certifications, work authorization/visa status, degree/education,
+location) rather than an experience or skill claim. `user-profile.md`
+is the standing, authoritative source for these; it does not change
+application to application, so it should never trigger a repeat gap
+question.
+
+- If `user-profile.md` states the fact one way or the other (holds a
+  cert, doesn't hold a cert, in-progress, work-authorized, location),
+  classify directly from it: MATCH if it satisfies the requirement,
+  GAP if it clearly doesn't (e.g., requirement asks for a cert the
+  profile explicitly doesn't list), with Basis citing
+  `user-profile.md`. Do not generate a Step 6 gap-dialogue question for
+  it either way; there's nothing left to ask.
+- Only fall through to bundle-checking and, if still unresolved, Step
+  6 gap dialogue when `user-profile.md` is genuinely silent on the
+  specific fact the requirement names (e.g., a certification never
+  listed there at all, held or not) or when the requirement needs a
+  judgment call the profile doesn't resolve (e.g., total years of
+  experience phrased in a way the profile doesn't state outright).
+
 Write the full mapping table to the session file's Requirement Mapping
 section:
 
@@ -200,6 +224,7 @@ section:
 | 5+ years SOX/ITGC experience | MATCH | corroborated, <Company> role |
 | Vendor risk program ownership | PARTIAL | unconfirmed, single source |
 | NIST AI RMF experience | GAP | not present in corpus |
+| CISSP, CRISC, or CISM preferred | PARTIAL | user-profile.md: CISSP in progress; CRISC/CISM not held |
 ```
 
 ## Step 6: Gap dialogue
@@ -255,6 +280,15 @@ analysis and gap-filling.
   same session (check the Gap Dialogue Log before asking); if a later
   requirement touches the same underlying fact, reference the earlier
   answer instead of re-asking.
+- Never ask a gap-dialogue question about certifications, work
+  authorization, degree/education, or location when `user-profile.md`
+  already states the answer (per Step 5a) -- these are standing
+  candidate facts, not per-application unknowns, and re-asking them on
+  every `/tailor-application` run wastes the candidate's time. If the
+  JD names a certification `user-profile.md` doesn't mention at all,
+  that's the one case still worth asking about; note the answer back
+  as a suggested `user-profile.md` addition in the session file rather
+  than only logging it to this one session.
 - Never write directly to `master-resume.md`, `master-metrics-vault.md`,
   or `corrections-log.md`; this agent only proposes updates for those
   files (surfaced for the next `/build-reference` run) and writes
