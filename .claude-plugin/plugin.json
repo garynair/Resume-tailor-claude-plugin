@@ -1,6 +1,6 @@
 {
   "name": "resume-tailor-plugin",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Human-in-the-loop resume and cover letter tailoring system. Companion to an existing automated job-application pipeline; used for higher-stakes applications requiring gap dialogue and manual QA.",
   "first_run": "commands/setup-profile.md",
   "skills": [
