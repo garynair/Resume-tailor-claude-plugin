@@ -47,25 +47,32 @@ facet of the same achievement, or use a different achievement, instead.
 Apply `skills/coverletter-format.md` exactly:
 
 - ~200 words (180-220 range), body text only.
-- Structure: opening (role + single strongest fit reason, optionally
-  followed by the Company Signal Line, see below), body (2-3 sourced
-  accomplishments tied to JD requirements, pulled from the bundle's
-  Cover-Letter Guide, prioritizing stories tagged for JD themes that
-  `job-analyzer` identified as MATCH or resolved PARTIAL/GAP items),
-  closing (confident, forward-looking).
+- Structure: opening (problem-first when a Company Signal Line is
+  available, see below: the signal line leads, the candidate-fit
+  sentence answers it; role + single strongest fit reason leads instead
+  when no signal line is available), body (2-3 sourced accomplishments
+  tied to JD requirements, pulled from the bundle's Cover-Letter Guide,
+  prioritizing stories tagged for JD themes that `job-analyzer`
+  identified as MATCH or resolved PARTIAL/GAP items), closing (confident,
+  forward-looking, and naming one concrete first action in the role,
+  genuinely inferable from the JD and the candidate's sourced
+  background, not just an invitation to talk).
 
 ## Company Signal Line
 
 Before drafting the opening, check the session file's Company Research
 section (written by `company-research`):
 
-- If `Found: true`, the opening may include a third sentence stating the
-  `Fact` and bridging it to GRC relevance using the `GRC relevance`
-  clause, per the Company Signal Line rule in
-  `skills/coverletter-format.md`. This sentence counts toward the
-  180-220 word body limit.
+- If `Found: true`, the letter's opening leads with a sentence stating
+  the `Fact` and bridging it to GRC relevance using the `GRC relevance`
+  clause, per the problem-first Company Signal Line rule in
+  `skills/coverletter-format.md`; the candidate-fit sentence follows as
+  the answer to it. This sentence counts toward the 180-220 word body
+  limit. Exactly one signal line per letter; if the session file somehow
+  carries more than one qualifying fact, use only the strongest.
 - If `Found: false`, or the section doesn't exist (undisclosed-client
-  recruiter posting), omit the line entirely. Do not attempt to recall
+  recruiter posting), omit the line entirely and open directly with the
+  role + single strongest fit reason instead. Do not attempt to recall
   or infer a company fact independently as a fallback; this agent has
   no web-search or sourcing authority of its own for this purpose.
 - Never restate the `Source` field anywhere in the letter; it exists
@@ -76,7 +83,12 @@ section (written by `company-research`):
 - No defensive "objection" paragraphs. If `job-analyzer` logged a GAP as
   **unfilled**, do not address it in the letter at all, neither by
   naming it nor by arguing around it; the letter makes the positive
-  case only.
+  case only. This is separate from the Confident domain-bridge move
+  permitted by `skills/coverletter-format.md`'s Opening rule: one clause
+  reframing a genuine surface-level domain difference around the
+  underlying shared competency is allowed, provided it contains no
+  hedge language and doesn't respond to any specific gap the JD raised;
+  it is a positioning move, not a rebuttal.
 - No em dashes; no unsupported superlative filler ("passionate,"
   "results-driven," "proven track record") per `skills/constraints.md`
   and the lexical checks in `skills/ai-fingerprint-checklist.md`.

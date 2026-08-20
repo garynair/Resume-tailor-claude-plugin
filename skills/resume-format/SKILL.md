@@ -235,7 +235,11 @@ GRC | TPRM | AI."
 
 Bullet count per role is role-position-aware, not a single flat range:
 
-- **Most recent/current role**: up to **7 bullets**.
+- **Most recent/current role**: up to **8 bullets** (raised from 7 on
+  2026-08-19 per direct candidate request). This is a ceiling, not a
+  floor — select the strongest available bullets per the
+  Achievement-Reframing Priority Map; do not pad to 8 with
+  lower-priority bullets when a tailoring genuinely supports fewer.
 - **Every other role**: **3-4 bullets**, no exceptions, regardless of
   how much corroborated content exists. Use the Achievement-Reframing
   Priority Map to select the strongest 3-4, not the first 3-4

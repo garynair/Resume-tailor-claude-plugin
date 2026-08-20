@@ -92,24 +92,57 @@ short.
      paragraphs below (this is separate from, and in addition to, the
      no-client-names rule for third-party clients/customers below).
 2. **Opening (1-2 sentences, up to 3 with the Company Signal Line)**:
-   state the role and, in one sentence, the single strongest reason this
-   candidate fits it. No "I am writing to apply for..." throat-clearing.
-   Optionally, a third sentence may add one **Company Signal Line**: a
-   specific, dated, verifiable fact about the target company (recent
-   funding, M&A, a regulatory action, a breach disclosure, a new
-   compliance mandate, a leadership hire in security/risk/compliance,
-   earnings-call commentary on risk/compliance investment) connected
-   directly to why the candidate's GRC background is relevant to it
-   right now. Never a generic "I admire your innovative culture" line;
-   it must name a specific, checkable event. See Company Signal Line
+   **problem-first ordering (permanent, added 2026-08-19)**: when a
+   Company Signal Line is available (see below), it leads the opening,
+   framing a specific, current, verifiable situation at the target
+   company; the candidate-fit sentence then follows as the answer to
+   that framing, not the other way around. When no Company Signal Line
+   is available, open directly with the role and, in one sentence, the
+   single strongest reason this candidate fits it. Either way: no "I am
+   writing to apply for..." throat-clearing. The **Company Signal
+   Line** itself is a specific, dated, verifiable fact about the target
+   company (recent funding, M&A, a regulatory action, a breach
+   disclosure, a new compliance mandate, a leadership hire in
+   security/risk/compliance, earnings-call commentary on risk/compliance
+   investment) connected directly to why the candidate's GRC background
+   is relevant to it right now. Never a generic "I admire your
+   innovative culture" line; it must name a specific, checkable event.
+   Exactly one Company Signal Line per letter -- if `company-research`
+   surfaces more than one qualifying fact, fold the strongest into a
+   single tight sentence rather than adding a second signal line; this
+   is a 200-word letter, not a research brief. See Company Signal Line
    sourcing rules below.
+
+   **Confident domain-bridge (permanent, added 2026-08-19)**: when the
+   candidate's specific industry/domain experience differs from the
+   target company's, one clause may name that surface-level difference
+   and immediately reframe it around the underlying shared competency
+   or problem (e.g., "Runway's domain is different from mine, but the
+   underlying problem is the same: proving an AI system is safe enough
+   for the people who depend on it"). This is distinct from, and
+   allowed alongside, the No-defensive-objection-paragraphs rule below:
+   a domain-bridge is one confident clause that reframes relevance
+   forward, contains no hedge language ("although," "despite," "while I
+   don't have," "I may lack"), and is not apologizing for or arguing
+   around a gap the employer raised. If it can't be written without a
+   hedge word or without sounding like an apology, leave it out rather
+   than force it.
 3. **Body (2 short paragraphs, or 1 paragraph plus 2-3 tight bullets)**:
    2-3 accomplishments drawn directly from the corpus/reference files,
    each tied to a requirement in the job description. Every metric here
    must also respect the no-repeated-metrics rule against the resume; do
    not restate a resume bullet verbatim.
 4. **Closing (1-2 sentences)**: forward-looking, confident, inviting next
-   steps. No hedging.
+   steps, and **naming one concrete first action** the candidate would
+   take in the role (e.g., "My first move would be to benchmark your
+   current control environment against SOC 2 and ISO 27001 requirements
+   and sequence the gap-closure work from there"), not generic
+   enthusiasm ("I'd welcome the opportunity to discuss..." on its own is
+   not sufficient; a concrete action must come first, an invitation to
+   discuss may follow it in the same sentence or a short second one). No
+   hedging. The concrete action must be genuinely inferable from the JD
+   and the candidate's sourced background, not an invented specific plan
+   the candidate has no basis for proposing.
 5. **Signature block** (not counted in the word total): "Sincerely," then
    the candidate's name (from `user-profile.md`). No contact line here
    either; per the minimal-header rule above, contact information is not
@@ -165,6 +198,14 @@ description, that is handled upstream during gap dialogue (fill it with a
 real, sourced accomplishment, or leave it out) rather than by naming the
 gap and arguing around it in the letter itself. A cover letter makes the
 positive case; it does not litigate.
+
+This does not prohibit the Confident domain-bridge move described in the
+Opening rule above; the distinguishing test is hedge language and
+posture, not subject matter. "Although my background is primarily in Y,
+I am confident..." is banned. "Y is different from mine, but the
+underlying problem is the same: Z" is allowed, because it names no gap
+as a deficiency and asks for no forgiveness -- it reframes forward
+instead of defending backward.
 
 ## Tone
 
