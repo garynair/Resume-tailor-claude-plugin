@@ -110,6 +110,62 @@ are regenerated periodically and may lag a very recent correction).
   priority hierarchy), but don't relabel a skill into JD language it
   doesn't actually describe.
 
+### Sole-coverage tiebreak (permanent, added 2026-08-19)
+
+When filling the final ceiling-limited slots for a role, the
+Achievement-Reframing Priority Map ranks candidates by achievement
+strength alone. That ranking can silently cost a resume its only
+coverage of a distinct, JD-named requirement when two candidate bullets
+are each the *sole* corroborated source for two different MATCH
+requirements and only one slot remains: raw achievement strength (a
+punchier metric, named tools, seniority signal) will always look better
+on its own than a plainer, metric-thin bullet, even when the plainer
+bullet is the only thing standing between a requirement and total
+silence in the document.
+
+Apply this tiebreak before falling back to the priority map's normal
+ranking: if two or more candidate bullets are each the only
+corroborated bullet substantiating a distinct requirement that
+Requirement Mapping classified MATCH (or a PARTIAL/GAP that gap
+dialogue resolved to a citable MATCH-equivalent), and only one slot
+remains, the candidate that closes an otherwise-uncovered requirement
+wins the slot, regardless of which candidate scores higher on the
+priority map's own achievement-strength ranking. Coverage breadth wins
+this specific tie outright, not just as a soft preference.
+
+Rationale, so this isn't applied blindly: an ATS's first pass scores
+primarily on whether a JD-parsed requirement term appears anywhere in
+the document, not on the narrative strength of whichever bullet carries
+it. A resume with two bullets covering the same requirement and zero
+bullets covering an equally JD-explicit sibling requirement scores worse
+at that gate than one with both requirements covered once each, even if
+one of the two bullets is individually less impressive. The ATS pass
+happens before any recruiter or hiring manager forms their own
+persuasion-based judgment, so protecting coverage breadth at that gate
+takes priority over which bullet reads more impressively to a human
+reader.
+
+This tiebreak applies **only between two otherwise-legitimate
+candidates** already cleared by the sourcing rule (corroborated, or
+user-confirmed unconfirmed/gap-dialogue-resolved). It is not a license
+to reach for a thin, borderline, or padding-adjacent bullet just because
+it happens to contain a JD keyword; that case is still governed by the
+existing sourcing and unconfirmed-tagging rules, unchanged. When more
+than two requirements are competing for the same single remaining slot,
+prefer the requirement stated earliest/most prominently in the JD's own
+named responsibility sections over one mentioned only in a general
+skills list, as a secondary tiebreak.
+
+This tiebreak makes the Requirement coverage check's Step 4 restoration
+guidance below largely a final audit rather than the primary mechanism:
+a sole-coverage conflict should be resolved here, at selection time,
+before the coverage check ever runs. If the coverage check still finds
+a void after this tiebreak was correctly applied, that means either no
+slot-swap was actually available without creating a different void
+(genuinely irresolvable within the ceiling, report and move on) or the
+tiebreak was missed during selection (fix it retroactively via a swap,
+per Step 4, and log why it was missed).
+
 ## Applying constraints and format
 
 Apply every rule in `skills/constraints.md` (priority hierarchy, name
