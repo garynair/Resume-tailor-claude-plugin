@@ -1,13 +1,14 @@
 {
   "name": "resume-tailor-plugin",
-  "version": "0.1.2",
-  "description": "Human-in-the-loop resume and cover letter tailoring system. Companion to an existing automated job-application pipeline; used for higher-stakes applications requiring gap dialogue and manual QA.",
+  "version": "0.2.0",
+  "description": "Human-in-the-loop resume and cover letter tailoring system, plus company-specific interview prep. Companion to an existing automated job-application pipeline; used for higher-stakes applications requiring gap dialogue and manual QA.",
   "first_run": "commands/setup-profile.md",
   "skills": [
     "./skills/constraints",
     "./skills/resume-format",
     "./skills/coverletter-format",
-    "./skills/ai-fingerprint-checklist"
+    "./skills/ai-fingerprint-checklist",
+    "./skills/interview-prep-format"
   ],
   "agents": [
     "./agents/intake-agent.md",
@@ -19,12 +20,14 @@
     "./agents/coverletter-writer.md",
     "./agents/critique-agent.md",
     "./agents/template-extractor.md",
-    "./agents/notion-sync-agent.md"
+    "./agents/notion-sync-agent.md",
+    "./agents/interview-prep.md"
   ],
   "commands": [
     "./commands/setup-profile.md",
     "./commands/build-reference.md",
-    "./commands/tailor-application.md"
+    "./commands/tailor-application.md",
+    "./commands/interview-prep.md"
   ],
   "excluded_from_bundle": [
     "user-data/"
