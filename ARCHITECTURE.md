@@ -214,9 +214,17 @@ session before this document existed. After any content change:
 
 1. Bump both `plugin.json`'s and `marketplace.json`'s `version` in the
    same commit.
-2. Uninstall and reinstall the plugin, then confirm `claude plugin
-   list` actually shows the new version before trusting a live run.
-3. Start a fresh session before the next real run; reusing an
+2. `git push` — **required for the Cowork desktop app to see the
+   change at all** (it reads from the GitHub remote), even though it
+   isn't required for the WSL CLI (which reads local disk directly).
+   See the confirmed facts below; skipping this step is the single most
+   likely reason a version mismatch keeps recurring.
+3. Uninstall and reinstall the plugin in *each* environment actually
+   used (WSL CLI and/or the Cowork desktop app), then confirm the
+   version shown in each before trusting a live run — the two have been
+   observed to disagree even when both are technically "up to date"
+   relative to their own source.
+4. Start a fresh session before the next real run; reusing an
    already-open session has been observed to keep serving stale
    plugin content even after a correct reinstall.
 
@@ -237,13 +245,23 @@ end to end:**
   the `.claude-plugin` subfolder — it appends `.claude-plugin/
   marketplace.json` itself. Passing the subfolder directly produces a
   "marketplace file not found" error with a doubled path.
-- **The marketplace resolves from the local filesystem, not from the
-  GitHub remote.** Verified directly: committing locally (no push) and
-  running `claude plugin uninstall` → `marketplace add` → `install` →
-  `claude plugin list` correctly showed the new version with nothing
-  pushed to GitHub. A `git push` is good practice to keep `origin` from
-  going stale, but it is not required for a version bump or content
-  change to take effect locally.
+- **Two separate install paths exist, reading from two different
+  sources — this is the actual root cause of every "version doesn't
+  match" symptom seen across this session and before it.** The WSL
+  `claude` CLI resolves the local marketplace straight from the
+  filesystem: committing locally (no push) and running `claude plugin
+  uninstall` → `marketplace add` → `install` → `claude plugin list`
+  correctly showed the new version with nothing pushed to GitHub. The
+  **Cowork desktop app's Plugins screen instead reads from the GitHub
+  remote** — verified directly: after a local-only commit it kept
+  showing the stale pre-session version (`0.2.0`) even after removing
+  and re-adding the plugin there; only after `git push` did removing
+  and re-adding the plugin in the desktop app pick up the current
+  version. **Operating rule: `git push` is required before the desktop
+  app will see a change, even though the WSL CLI never needed it.**
+  Always push as part of the standard version-bump/reinstall sequence
+  above, not as an optional afterthought, if the desktop app is used at
+  all alongside WSL.
 
 ## Known issues fixed 2026-09-11 (see `_backups/` for full diffs)
 
