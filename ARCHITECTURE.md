@@ -220,11 +220,30 @@ session before this document existed. After any content change:
    already-open session has been observed to keep serving stale
    plugin content even after a correct reinstall.
 
-(Confirmed 2026-09-11: `D:\CLAUDE\Resume-Tailor-Claude` is not a git
-repository — `git status` returns "not a git repository." The
-git-resolution theory below was ruled out; the marketplace reads
-straight from the filesystem, so the version-bump + reinstall steps
-above are sufficient on their own.)
+**Confirmed 2026-09-11 — the CLI environment and git facts, resolved
+end to end:**
+
+- The `claude` CLI runs inside **WSL**, not native Windows. The plugin
+  folder is `D:\CLAUDE\Resume-Tailor-Claude\Resume-tailor-plugin` from
+  Windows, and `/mnt/d/CLAUDE/Resume-Tailor-Claude/Resume-tailor-plugin`
+  from inside WSL — use the WSL path for every `claude plugin` command.
+- `git status`/`add`/`commit` from a plain Windows PowerShell prompt at
+  `D:\CLAUDE\Resume-Tailor-Claude` (the parent folder) fails with "not a
+  git repository" — that's not the repo root. The actual repo root is
+  `Resume-tailor-plugin` itself, one level down, with a real GitHub
+  remote: `https://github.com/garynair/Resume-tailor-claude-plugin`
+  (**public**).
+- `claude plugin marketplace add` takes the **plugin repo root**, not
+  the `.claude-plugin` subfolder — it appends `.claude-plugin/
+  marketplace.json` itself. Passing the subfolder directly produces a
+  "marketplace file not found" error with a doubled path.
+- **The marketplace resolves from the local filesystem, not from the
+  GitHub remote.** Verified directly: committing locally (no push) and
+  running `claude plugin uninstall` → `marketplace add` → `install` →
+  `claude plugin list` correctly showed the new version with nothing
+  pushed to GitHub. A `git push` is good practice to keep `origin` from
+  going stale, but it is not required for a version bump or content
+  change to take effect locally.
 
 ## Known issues fixed 2026-09-11 (see `_backups/` for full diffs)
 
@@ -244,15 +263,27 @@ above are sufficient on their own.)
   percentages), banned lead verbs (Orchestrated, Leveraged, Facilitated,
   Championed), expanded approved lead-verb rotation, American English
   spelling standard, keyword-dumping heuristic.
+- **`known-gaps` privacy split**: the skill previously stated the
+  candidate's real certification status directly, which is a problem
+  once the repo was confirmed public (see below). Split into a public
+  `skills/known-gaps/SKILL.md` (mechanism only, no personal specifics)
+  and a private `user-data/reference/known-gaps.md` (sibling directory,
+  gitignored, holds the actual facts).
+- **Public GitHub remote confirmed** on the `Resume-tailor-plugin` repo
+  (`github.com/garynair/Resume-tailor-claude-plugin`, public). Anything
+  committed here is visible to anyone; `user-data/` was confirmed never
+  committed (`git log -- user-data/` returned nothing) and is gitignored
+  going forward, same treatment now extended to the `known-gaps` split
+  above.
 
 ## Open items
 
 - **`marketplace.json`'s top-level `source` field** is literally the
-  string `"..."`, not a real path — predates 2026-09-11's changes. Now
-  that git is confirmed not involved (see Version and cache discipline
-  above), this is the next thing worth checking directly if the
-  marketplace ever fails to resolve: a bare `"..."` may be a placeholder
-  that was never filled in.
+  string `"..."`, not a real path — predates 2026-09-11's changes and
+  still unexplained. Worth checking directly if the marketplace ever
+  fails to resolve: a bare `"..."` may be a placeholder that was never
+  filled in. Not blocking — the plugin's own `"source": "./"` entry
+  resolves correctly regardless.
 - **Notion sync**: intentionally disconnected from `/tailor-application`
   regardless of `user-profile.md`'s `notion_sync` setting, gated behind
   `notion-sync-agent.md`'s own activation criteria (Step 7 validation
