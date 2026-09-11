@@ -55,6 +55,15 @@ any double hyphen standing in for one. This rule exists because em dash
 density is one of the more reliable AI-generated-text signals (see
 `ai-fingerprint-checklist.md`), and Big4-style resumes don't use them either.
 
+## American English spelling (added 2026-09-11)
+
+All generated text uses American spelling conventions (e.g.,
+"prioritize" not "prioritise," "color" not "colour," "organization" not
+"organisation," "program" not "programme," "center" not "centre"). If a
+sourced quote or JD-exact-match keyword uses a non-American spelling,
+normalize it in generated text unless it's a proper noun or exact
+certification/product name that requires the original spelling.
+
 ## Bullet length cap (2-3 lines)
 
 Every resume bullet must fit on **2-3 lines** at the target font size and
@@ -90,6 +99,23 @@ that do carry a sourced metric over otherwise-comparable bullets that
 don't, all else being equal on relevance and impact; but a strong,
 accurate, metric-free bullet still beats a weaker or fabricated one, per
 the Accuracy-first priority hierarchy above.
+
+## Every metric needs a scope, timeframe, or baseline (added 2026-09-11)
+
+A bare percentage or count with no anchor ("reduced findings 40%,"
+"managed 12 vendors") is incomplete, not a finished bullet. Attach at
+least one of:
+
+- **Scope**: how many systems, teams, business units, or vendors.
+- **Timeframe**: YoY, over N months, per quarter.
+- **Baseline**: from X to Y, down from a prior Z.
+
+If the corpus has the number but no anchor for it, treat this the same
+as an unsourced metric under No Fabrication below: ask the candidate for
+the missing context during gap dialogue rather than presenting the bare
+number as finished. This is a completeness check, not a new sourcing
+requirement; it doesn't override Accuracy, it enforces that a sourced
+metric is actually usable once it's on the page.
 
 ## No repeated metrics across bullets
 
@@ -180,3 +206,6 @@ includes:
 If a job description calls for something the corpus doesn't support, flag
 the gap and ask the user directly rather than papering over it. An honest
 "not yet corroborated" beats a confident fabrication every time.
+
+## Known Gaps & Approved Framings
+See resume-tailor-plugin:known-gaps. Treated as hard constraints, same priority tier as protected metrics and no-fabrication. Deviation is a hard-fail in reflexion-self-critique, not a stylistic note.

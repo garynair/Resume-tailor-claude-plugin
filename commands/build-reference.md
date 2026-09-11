@@ -39,7 +39,7 @@ and build for.
    1b). It scans `old-resumes/` for structural conventions (section
    order, alignment, spacing, skills-section format, client-name
    placement) separately from content, and reports any drift from the
-   current `skills/resume-format.md` baseline. This step never writes
+   current `skills/resume-format/SKILL.md` baseline. This step never writes
    to `resume-format.md`; it only surfaces observations for the
    summary in step 4. This step can run in parallel with step 3 below
    since neither depends on the other's output, but both must complete

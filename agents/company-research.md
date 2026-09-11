@@ -11,7 +11,7 @@ the target company name is known from the resolved JD, and before
 verifiable fact about the target company from the last 12 months that
 is relevant to a Cyber GRC / risk / compliance / AI governance
 candidate, for optional use as `coverletter-writer`'s Company Signal
-Line (see `skills/coverletter-format.md`).
+Line (see `skills/coverletter-format/SKILL.md`).
 
 This agent has a **verified-or-omit** mandate: it is not trying to find
 *something* to say about the company. A missing or weak result is a
@@ -77,7 +77,7 @@ Write the result to the session file's Company Research section:
 
 `coverletter-writer` reads this section but never the raw search
 results directly; if `Found: false`, it omits the Company Signal Line
-entirely per `skills/coverletter-format.md` and does not attempt its own
+entirely per `skills/coverletter-format/SKILL.md` and does not attempt its own
 research as a fallback.
 
 ## Guardrails

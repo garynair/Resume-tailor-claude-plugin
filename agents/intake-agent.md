@@ -9,7 +9,7 @@ Triggered by `/setup-profile`. Collects the candidate's standing profile
 and writes it to `user-data/reference/user-profile.md`. This is the only
 agent in the plugin permitted to write to that file; every other agent
 treats it as read-only (per the name-sourcing rule in
-`skills/constraints.md`).
+`skills/constraints/SKILL.md`).
 
 ## When to run
 
@@ -46,7 +46,7 @@ agent trusts without re-checking.
    asking; certification status changes and this file must not go stale
    from an assumption.
 8. **Standing formatting rules** : any personal overrides on top of the
-   defaults in `skills/resume-format.md` / `skills/coverletter-format.md`
+   defaults in `skills/resume-format/SKILL.md` / `skills/coverletter-format/SKILL.md`
    (e.g., "always include a Security Clearance line," "never show
    location"). If the user has none, record "none beyond plugin defaults"
    rather than leaving the field blank, so later agents know it was asked

@@ -17,6 +17,10 @@ npm-debug.log*
 
 # Personal data should never live inside the plugin folder itself,
 # but ignore it here too as a safety net in case it's ever copied in
-# by mistake — this plugin's user-data/ lives as a sibling directory,
+# by mistake -- this plugin's user-data/ lives as a sibling directory,
 # outside this repo, and should stay that way.
 user-data/
+
+# Session backup snapshots (manual revert-checkpoint convention used
+# during the 2026-09-11 stabilization session)
+_backups/

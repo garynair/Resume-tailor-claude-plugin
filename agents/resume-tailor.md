@@ -15,7 +15,7 @@ file's Bullet Plan section before producing the final document.
 
 `user-data/reference/template-resume.docx` is the canonical, structurally
 verified reference document for every formatting rule in
-`skills/resume-format.md` (confirmed 2026-07-29, 7/4/3 bullet-count
+`skills/resume-format/SKILL.md` (confirmed 2026-07-29, 7/4/3 bullet-count
 example, 2 pages, all spacing/alignment/section-order rules satisfied).
 When producing the final `.docx`, clone and repopulate this template's
 structure (page setup, styles, header/footer, section borders, the
@@ -35,7 +35,7 @@ Every bullet is built from three parts, in this order:
 - **W (What)** : the lead verb plus the scope of the action: what the
   candidate did and over what scope (team size, program, business unit,
   system). This is where the lead-verb rotation rule from
-  `skills/resume-format.md` applies.
+  `skills/resume-format/SKILL.md` applies.
 - **H (How)** : the method, framework, or tool that made it possible
   (e.g., "via NIST CSF 2.0 gap assessment," "using a risk-tiered vendor
   questionnaire," "through a cross-functional CAB process"). This is
@@ -70,7 +70,7 @@ in the draft, no matter how well it would fit the JD. If a JD requirement
 has no source in either place and wasn't resolved during gap dialogue,
 flag it back to the user rather than writing a plausible-sounding bullet
 to cover the gap; this is the same rule as the fabrication ban in
-`skills/constraints.md`, applied at draft time.
+`skills/constraints/SKILL.md`, applied at draft time.
 
 Record the citation inline in the session file's Bullet Plan (not
 necessarily in the resume document itself):
@@ -168,10 +168,10 @@ per Step 4, and log why it was missed).
 
 ## Applying constraints and format
 
-Apply every rule in `skills/constraints.md` (priority hierarchy, name
+Apply every rule in `skills/constraints/SKILL.md` (priority hierarchy, name
 from `user-profile.md`, no em dashes, 2-3 line bullet cap, metric
 density, no repeated metrics across bullets) and every rule in
-`skills/resume-format.md` (Arial 11pt body by default, left-aligned
+`skills/resume-format/SKILL.md` (Arial 11pt body by default, left-aligned
 throughout, navy 12pt bold headers, "Page X of Y" gray footer, 2-page
 max, 0.75" margins, lead-verb rotation, Core Skills/Technical Skills
 formats, client-name line, tagline, Visa Status line, file naming).
@@ -182,12 +182,12 @@ Before finalizing:
    facet of the achievement (or a different achievement) for the other.
 2. Scan for lead-verb repeats within a role and across the resume.
 3. Confirm every bullet fits the 2-3 line cap at the current body
-   font/size and margin settings in `skills/resume-format.md`; tighten
+   font/size and margin settings in `skills/resume-format/SKILL.md`; tighten
    by cutting qualifying clauses before cutting the Outcome. A bullet
    sitting comfortably at 2 lines should stay there; don't pad to fill
    the third line.
 4. Confirm every bullet carries 1-2 sourced metrics per the Metric
-   density rule in `skills/constraints.md`. Where a bullet has none and
+   density rule in `skills/constraints/SKILL.md`. Where a bullet has none and
    a genuine sourced metric exists elsewhere in the corpus for that same
    achievement, add it. Where none exists, leave the bullet metric-free;
    never fabricate one to satisfy this check.
@@ -203,7 +203,7 @@ font/size, spacing value, tagline shape, or file-naming pattern per
 application, even if a specific job description seems to suggest a
 different layout would look better. If a job or user request seems to
 call for a structural change (a different section order, a new section,
-a different alignment), that is a change to `skills/resume-format.md`
+a different alignment), that is a change to `skills/resume-format/SKILL.md`
 itself, made through an explicit user instruction, not a per-application
 judgment call made inside this agent's drafting pass.
 
@@ -288,7 +288,7 @@ carried forward into the report's first list unchanged (see below).
   the Gap Dialogue Log (read-only source, not re-derived); the second
   list is this agent's own finding from the coverage check above.
 - Produce the resume document itself (per the docx skill and
-  `skills/resume-format.md`) to
+  `skills/resume-format/SKILL.md`) to
   `user-data/output/<company>_<role>/resume.docx` (create the folder if
   needed, matching the session file's company/role slug).
 - Hand off to `critique-agent` only after `coverletter-writer` also

@@ -23,7 +23,7 @@ wants a fresh structural scan without a full `/build-reference` pass.
 
 ## Baseline status (as of 2026-07-27)
 
-`skills/resume-format.md` was rewritten cleanly on 2026-07-27 from a
+`skills/resume-format/SKILL.md` was rewritten cleanly on 2026-07-27 from a
 full round of explicit, confirmed user decisions (left-aligned
 throughout; client names as an italic sub-line under each role header;
 Core Skills as a single flat "•"-separated line capped at 10-12 items;
@@ -53,7 +53,7 @@ detection**, not template authorship.
      role-header suffix, or absent).
    - Tagline presence/format, if any.
 3. Compare these observations against the current
-   `skills/resume-format.md` baseline.
+   `skills/resume-format/SKILL.md` baseline.
 4. **Report drift, do not auto-apply it.** If a newly added source
    resume uses a structural convention that differs from the current
    baseline (e.g., a new resume in the corpus uses justified text, or a
@@ -87,7 +87,7 @@ complete, valid output.
 
 ## Guardrails
 
-- Never write to `skills/resume-format.md` directly. This agent
+- Never write to `skills/resume-format/SKILL.md` directly. This agent
   observes and reports; only an explicit user instruction (implemented
   by editing `resume-format.md` directly, the way every rule currently
   in that file was added) changes the baseline.

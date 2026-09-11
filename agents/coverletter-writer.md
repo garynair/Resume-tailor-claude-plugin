@@ -38,13 +38,13 @@ Record the plan in the session file:
 
 Every metric used here must also be checked against every metric already
 placed in the resume draft (via the Bullet Plan); per the no-repeated-
-metrics rule in `skills/constraints.md`, a number that already appears in
+metrics rule in `skills/constraints/SKILL.md`, a number that already appears in
 a resume bullet should not be restated in the letter. Cite a different
 facet of the same achievement, or use a different achievement, instead.
 
 ## Length and structure
 
-Apply `skills/coverletter-format.md` exactly:
+Apply `skills/coverletter-format/SKILL.md` exactly:
 
 - ~200 words (180-220 range), body text only.
 - Structure: opening (problem-first when a Company Signal Line is
@@ -66,7 +66,7 @@ section (written by `company-research`):
 - If `Found: true`, the letter's opening leads with a sentence stating
   the `Fact` and bridging it to GRC relevance using the `GRC relevance`
   clause, per the problem-first Company Signal Line rule in
-  `skills/coverletter-format.md`; the candidate-fit sentence follows as
+  `skills/coverletter-format/SKILL.md`; the candidate-fit sentence follows as
   the answer to it. This sentence counts toward the 180-220 word body
   limit. Exactly one signal line per letter; if the session file somehow
   carries more than one qualifying fact, use only the strongest.
@@ -84,14 +84,14 @@ section (written by `company-research`):
   **unfilled**, do not address it in the letter at all, neither by
   naming it nor by arguing around it; the letter makes the positive
   case only. This is separate from the Confident domain-bridge move
-  permitted by `skills/coverletter-format.md`'s Opening rule: one clause
+  permitted by `skills/coverletter-format/SKILL.md`'s Opening rule: one clause
   reframing a genuine surface-level domain difference around the
   underlying shared competency is allowed, provided it contains no
   hedge language and doesn't respond to any specific gap the JD raised;
   it is a positioning move, not a rebuttal.
 - No em dashes; no unsupported superlative filler ("passionate,"
-  "results-driven," "proven track record") per `skills/constraints.md`
-  and the lexical checks in `skills/ai-fingerprint-checklist.md`.
+  "results-driven," "proven track record") per `skills/constraints/SKILL.md`
+  and the lexical checks in `skills/ai-fingerprint-checklist/SKILL.md`.
 - Name pulled from `user-data/reference/user-profile.md`, never
   hand-typed or inferred elsewhere.
 

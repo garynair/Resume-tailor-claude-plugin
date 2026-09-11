@@ -15,7 +15,7 @@ final resume + cover letter in `user-data/output/<company>_<role>/`.
 Check `user-data/reference/user-profile.md` exists and has at least the
 `Name:` field populated. If it doesn't, stop immediately and direct the
 user to run `/setup-profile` first; do not proceed with a blank or
-guessed name, per the name-sourcing rule in `skills/constraints.md`.
+guessed name, per the name-sourcing rule in `skills/constraints/SKILL.md`.
 
 Also check `user-data/reference/master-resume.md` has content (i.e.,
 `/build-reference` has run at least once). If it's still empty, stop and
@@ -67,15 +67,6 @@ Both agents:
   `master-resume.md` or an approved gap-dialogue entry) and check
   `corrections-log.md` before finalizing any figure.
 
-Coordination point: since both agents draft from the same underlying
-material, after both finish drafting, cross-check the Bullet Plan and
-Cover Letter Plan for the no-repeated-metrics rule in
-`skills/constraints.md` (a number used in a resume bullet should not
-also appear in the cover letter). If a repeat is found, this command
-should flag it back to `coverletter-writer` for a quick revision before
-moving on to critique, rather than letting `critique-agent` be the first
-to catch it.
-
 Each agent produces its output document once drafting is finalized:
 
 - `user-data/output/<company>_<role>/resume.docx`
@@ -90,6 +81,22 @@ any coverage voids caused by bullets dropped for space/length/tier/
 collision reasons during this drafting pass; see
 `agents/resume-tailor.md`). This report is what Step 5 surfaces to the
 user below.
+
+**2026-09-11 change (timing optimization):** this step previously
+required a command-level "coordination point" pausing both agents after
+drafting to manually cross-check the Bullet Plan against the Cover
+Letter Plan for the no-repeated-metrics rule, and to send
+`coverletter-writer` back for a revision before critique could start.
+That manual gate is removed. Duplicate-metric conflicts across the
+resume and cover letter are now caught by `critique-agent`'s existing
+Tier 1 (blocking) finding for this exact rule (see
+`agents/critique-agent.md`'s scoring table and Tier 1 list) — the check
+was already happening twice; this removes the redundant, serializing
+copy of it. If a Tier 1 duplicate-metric finding comes back from
+critique, route it through the normal Step 5 revision path like any
+other Tier 1 finding, rather than reinstating a separate pre-critique
+gate. Reverted from the version in `_backups/20260911T053003Z/` if this
+turns out to move the problem rather than remove it.
 
 ## Step 4: Critique (fresh context)
 

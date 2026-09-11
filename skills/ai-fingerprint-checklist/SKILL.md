@@ -35,6 +35,14 @@ means a rewrite pass, not a spot-fix.
   "significant," "substantial" used where a real figure exists in the
   corpus and should be used instead.
 
+- **Keyword-dumping (added 2026-09-11).** A bullet or summary line that
+  strings together JD terms with no connecting logic ("Led SOX, ITGC,
+  NIST CSF, SOC 2, and vendor risk initiatives") rather than describing
+  an actual action and outcome that happens to use those terms
+  naturally. If a keyword doesn't fit a real, sourced sentence, it
+  belongs in Core Skills/Technical Skills (see `resume-format.md`), not
+  forced into a bullet.
+
 ## Structural heuristics
 
 - **Perfectly even bullet lengths.** If every bullet in a role block is

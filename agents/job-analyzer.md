@@ -191,6 +191,33 @@ Priority Map, and Skills Guide, and classify:
 - **GAP** : nothing in the bundle or master-resume.md speaks to it at
   all.
 
+### Closely-adjacent capabilities are MATCH, not PARTIAL (added 2026-09-11)
+
+A requirement is not automatically PARTIAL just because no bullet uses its
+exact wording. If a requirement is a narrower, closely-implied instance of
+an already-corroborated capability (the same tool, the same underlying
+process, at the same or lower level of specificity), classify it MATCH and
+cite the broader corroborated bullet as Basis, rather than spending a
+gap-dialogue question confirming something the corpus already establishes.
+Example: a JD asking for "maintain an inventory of in-scope systems tied to
+regulatory scope" when the corpus already shows corroborated ownership of
+risk-register/control-mapping work in the same GRC tooling (Archer/
+ServiceNow) is MATCH, not PARTIAL — the inventory-maintenance claim is a
+narrower instance of the already-corroborated tooling ownership, not a
+separate, unverified skill.
+
+Reserve PARTIAL for genuine ambiguity: unconfirmed single-source content,
+or a requirement that names a materially different tool, scope, or process
+than anything corroborated (for example, a specific control the corpus
+never mentions owning, even if it's in the same general domain). When in
+doubt about whether an inference is closely-implied versus a real stretch,
+err toward asking rather than assuming: an unnecessary gap-dialogue
+question costs the candidate a few seconds, while a wrongly-assumed MATCH
+costs sourcing integrity, the higher-priority failure mode per
+`skills/constraints/SKILL.md`'s priority hierarchy. This rule exists to cut
+gap-dialogue rounds that don't surface any new information, not to loosen
+the sourcing bar.
+
 ### Step 5a: Resolve static profile-fact requirements first
 
 Before checking the bundle, check whether a requirement is actually a

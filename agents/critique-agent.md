@@ -66,7 +66,7 @@ cover letter claim, same check per `coverletter-writer.md`. Also check
 every figure against `corrections-log.md`. Any bullet or claim that
 fails traceability is an automatic flag in the critique regardless of
 how well-written it is; sourcing failures are Accuracy-tier per
-`skills/constraints.md` and outrank every other finding.
+`skills/constraints/SKILL.md` and outrank every other finding.
 
 ## Multi-persona read-through
 
@@ -74,7 +74,7 @@ Evaluate the resume and cover letter from three distinct personas, in
 this order, each producing its own notes before scoring:
 
 1. **ATS bot** : mechanical pass: does formatting match
-   `skills/resume-format.md` exactly (Arial 10.5pt body, left-aligned,
+   `skills/resume-format/SKILL.md` exactly (Arial 10.5pt body, left-aligned,
    navy 11-12pt bold headers, "Page X of Y" footer, no tables/text
    boxes/graphics, 2-page max)? Does the resume contain the JD's
    exact-match keywords and phrasing where a genuine skill match exists
@@ -93,7 +93,7 @@ this order, each producing its own notes before scoring:
    actually show up clearly and in proportion to their importance in the
    posting? Does the cover letter's narrative complement the resume
    rather than repeating it verbatim? Run the
-   `skills/ai-fingerprint-checklist.md` lexical/structural/formatting
+   `skills/ai-fingerprint-checklist/SKILL.md` lexical/structural/formatting
    passes here as well.
 
 ## Weighted scoring
@@ -106,7 +106,7 @@ black box):
 |---|---|---|
 | Accuracy/traceability | 30% | Every claim sourced; no unresolved sourcing failures |
 | Relevance to JD | 25% | Requirement Mapping MATCH items are visible and prominent |
-| Impact/specificity | 20% | Bullets lead with outcome, not just activity; vault metrics used where available; each bullet carries 1-2 sourced metrics per `skills/constraints.md`'s Metric density rule, with no fabricated metric added just to satisfy it |
+| Impact/specificity | 20% | Bullets lead with outcome, not just activity; vault metrics used where available; each bullet carries 1-2 sourced metrics per `skills/constraints/SKILL.md`'s Metric density rule, with no fabricated metric added just to satisfy it |
 | ATS compliance | 15% | Format spec followed exactly; keyword match present |
 | Readability/brevity | 10% | 2-3 line cap held (2 lines preferred, no padding to fill a third); no filler; 2-page max; cover letter in the 180-220 word range |
 
@@ -148,17 +148,17 @@ wrong. It has three parts:
     be rare and is itself worth flagging as a possible miss), `failed
     source-trace` (unconfirmed and never resolved via gap dialogue), or
     `conflict` (excluded per the data-conflict protocol or the
-    metric-collision tiebreak in `skills/constraints.md`). Every
+    metric-collision tiebreak in `skills/constraints/SKILL.md`). Every
     excluded bullet needs exactly one of these three reasons stated
     explicitly; "left out" with no reason is not acceptable.
 (b) **Metrics moved or swapped.** List every case where a metric was
     kept on one bullet and dropped from, or substituted on, another
     bullet because of a collision, per the metric-collision tiebreak in
-    `skills/constraints.md`. State which bullet kept the number, which
+    `skills/constraints/SKILL.md`. State which bullet kept the number, which
     lost it, and why.
 (c) **Structural/format deviations.** Compare the finished resume and
-    cover letter against the current `skills/resume-format.md` and
-    `skills/coverletter-format.md` line by line, and list anything that
+    cover letter against the current `skills/resume-format/SKILL.md` and
+    `skills/coverletter-format/SKILL.md` line by line, and list anything that
     deviates from the last finalized version of those specs (e.g., a
     section out of order, a missing required section, wrong font/color/
     border treatment, tagline missing or malformed). If there are no

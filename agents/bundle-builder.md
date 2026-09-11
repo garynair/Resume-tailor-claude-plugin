@@ -46,7 +46,7 @@ strongest material for this track. This is a targeting aid for
 ### 2. Summary guide
 
 2-3 alternate professional-summary drafts (2-4 lines each, matching the
-Structure section of `skills/resume-format.md`) built only from
+Structure section of `skills/resume-format/SKILL.md`) built only from
 corroborated or user-confirmed content, tuned for this track's
 vocabulary and priorities. Mark clearly which source bullets each
 summary draws from so `resume-tailor` can verify traceability later.
