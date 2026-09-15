@@ -87,7 +87,7 @@ portable record independent of the session file. Save it to
 ```
 
 using the same `<Name>`/`<ClientOrCompany>`/`<JobRole>` conventions as
-`resume-format.md`'s File naming convention section (candidate name from
+`skills/resume-format/SKILL.md`'s File naming convention section (candidate name from
 `user-profile.md`, company or recruiter/agency name if undisclosed-client,
 filename-safe job title).
 
@@ -112,9 +112,9 @@ JD Link: <URL, or "Provided as pasted text (no URL given)">
 
 Use the field values captured in Step 1. Never fabricate a value for a
 field the JD didn't state; "Not specified in JD" is always the correct
-fallback per the No Fabrication rule in `constraints.md`. This document
+fallback per the No Fabrication rule in `skills/constraints/SKILL.md`. This document
 is descriptive only, not a tailored deliverable, so none of
-`resume-format.md`'s or `coverletter-format.md`'s structural rules
+`skills/resume-format/SKILL.md`'s or `skills/coverletter-format/SKILL.md`'s structural rules
 (bullet counts, tagline, section order, etc.) apply to it.
 
 ## Step 4: JD-keyword-to-track decision tree
@@ -242,51 +242,128 @@ question.
   judgment call the profile doesn't resolve (e.g., total years of
   experience phrased in a way the profile doesn't state outright).
 
+### Step 5b: Criticality tagging
+
+Alongside Classification, tag every requirement's **Criticality**, since
+this determines how much time Step 6 spends verifying it:
+
+- **CORE**: the JD states it as required/must-have (listed under a
+  "Requirements"/"Must have"/"Qualifications" heading rather than
+  "Preferred"/"Nice to have"), or it is the stated primary function of
+  the role per the title/opening scope (per Step 4's title/scope-
+  matching logic). A wrong or fabricated claim here materially
+  misrepresents fit for the role — this is where verification accuracy
+  matters most.
+- **SUPPORTING**: everything else — a "preferred" qualification, a
+  secondary elaborating detail, or a narrower instance of a broader
+  domain already covered elsewhere in the mapping. Getting one of these
+  slightly wrong or leaving it unconfirmed is a minor, correctable cost,
+  not a misrepresentation of core fit.
+
 Write the full mapping table to the session file's Requirement Mapping
 section:
 
 ```markdown
-| Requirement | Classification | Basis |
-|---|---|---|
-| 5+ years SOX/ITGC experience | MATCH | corroborated, <Company> role |
-| Vendor risk program ownership | PARTIAL | unconfirmed, single source |
-| NIST AI RMF experience | GAP | not present in corpus |
-| CISSP, CRISC, or CISM preferred | PARTIAL | user-profile.md: CISSP in progress; CRISC/CISM not held |
+| Requirement | Classification | Criticality | Basis |
+|---|---|---|---|
+| 5+ years SOX/ITGC experience | MATCH | CORE | corroborated, <Company> role |
+| Vendor risk program ownership | PARTIAL | CORE | unconfirmed, single source |
+| NIST AI RMF experience | GAP | CORE | not present in corpus |
+| CISSP, CRISC, or CISM preferred | PARTIAL | SUPPORTING | user-profile.md: CISSP in progress; CRISC/CISM not held |
 ```
 
-## Step 6: Gap dialogue
+## Step 6: Gap dialogue (time-budgeted)
 
-For every PARTIAL and GAP requirement, ask the user a closed-ended
-question, one at a time, rather than an open-ended "tell me about X."
-Closed-ended means the user can answer with a fact, a yes/no, or a
-short specific phrase, not a paragraph they have to compose from
-scratch:
+This process is calibrated for a working professional tailoring many
+applications, not a research candidate whose every individual claim
+must be independently, exhaustively verified before use. The goal is a
+good-enough, honestly-flagged draft in roughly 15-20 minutes end to
+end, not an audit of every requirement one control at a time — that
+posture belongs to a different kind of applicant and a different risk
+profile. CORE requirements are the deliberate exception to this
+leniency: a wrong or invented claim against a must-have requirement
+does real damage to the application, so those still get individually
+verified regardless of time cost. Everything SUPPORTING is where the
+time budget applies.
 
-- For PARTIAL (unconfirmed content): "The corpus has this as
-  single-source: '<bullet text>' : can you confirm this is accurate as
-  stated, or does it need correction?" If confirmed, it becomes citable
-  for this application (and should be proposed for promotion to
-  `master-metrics-vault.md`/corroborated status if the user's
-  confirmation effectively makes it a second source; note that
-  suggestion in the session file for the next `/build-reference` run
-  rather than editing master-resume.md directly). If the user corrects
-  it, log the correction and flag it for `corrections-log.md`.
-- For GAP: ask a specific, answerable question tied to the exact
-  requirement, e.g., "Have you directly owned a vendor risk program (not
-  just contributed to one), and if so, at which company and for roughly
-  how long?" rather than "Tell me about your vendor risk experience."
-  If the user has no relevant experience at all, mark the gap as
-  **unfilled** rather than pushing for an answer; unfilled gaps are
-  handled by omission or honest framing in the resume, never fabrication.
+### Step 6a: Cluster before asking
 
-Log every question and answer to the Gap Dialogue Log section with a
-timestamp:
+Before writing any question, group all PARTIAL/GAP requirements that
+fall under the same broad capability domain (use the track/domain
+signal from Step 4, not just literal keyword overlap — e.g., every
+AI-governance sub-activity, or every vendor-risk sub-activity, is one
+cluster even if the JD phrases each as a separate bullet). Within a
+cluster, ask **one** consolidated checklist question instead of one
+question per item:
+
+```
+For <domain>, which of these have you actually done? Reply with the
+letters that apply, or "none" / "all":
+a) <sub-item 1>
+b) <sub-item 2>
+c) <sub-item 3>
+```
+
+A cluster of unrelated single PARTIAL/GAP items (no shared domain)
+stays as individual closed-ended questions, same style as before:
+
+- PARTIAL: "The corpus has this as single-source: '<bullet text>' :
+  can you confirm this is accurate as stated, or does it need
+  correction?"
+- GAP: a specific, answerable question tied to the exact requirement,
+  e.g., "Have you directly owned a vendor risk program (not just
+  contributed to one), and if so, at which company and for roughly how
+  long?" — never an open-ended "tell me about X."
+
+If confirmed, PARTIAL content becomes citable for this application (and
+should be proposed for promotion to `master-metrics-vault.md`/
+corroborated status, noted in the session file for the next
+`/build-reference` run rather than editing master-resume.md directly).
+If corrected, log the correction and flag it for `corrections-log.md`.
+If the user has no relevant experience for a GAP item at all, mark it
+**unfilled** rather than pushing for an answer; unfilled gaps are
+handled by omission or honest framing, never fabrication.
+
+### Step 6b: Budget
+
+CORE requirements are exempt from any budget — every CORE PARTIAL/GAP
+still gets asked (individually, or as part of a cluster if it shares a
+domain with other CORE items), never deferred, never batched away.
+
+SUPPORTING requirements draw against a soft budget of **5 gap-dialogue
+interactions per session**, where one clustered checklist question
+counts as a single interaction regardless of how many sub-items it
+bundles. Spend the budget on whichever SUPPORTING items are most
+differentiating for this specific JD first (a requirement the JD
+emphasizes or repeats outranks a passing mention).
+
+### Step 6c: Once the SUPPORTING budget is spent
+
+Any remaining SUPPORTING PARTIAL/GAP requirement is not asked. Log it
+directly:
+
+```markdown
+- [<ISO timestamp>] Requirement: <requirement text> : Resolution:
+  deferred - not asked (time budget); treated as unconfirmed/excluded
+  per resume-tailor's sourcing rules
+```
+
+This is a deliberate accuracy/speed tradeoff for supporting details
+only — `resume-tailor` already excludes anything not resolved here
+rather than fabricating it, so deferring is safe, not silent
+overclaiming.
+
+Log every question (single or clustered) and answer to the Gap
+Dialogue Log section with a timestamp:
 
 ```markdown
 ## Gap Dialogue Log
 
 - [<ISO timestamp>] Q: <question> : A: <user's answer> : Resolution:
   <confirmed as-is | corrected to "..." | unfilled>
+- [<ISO timestamp>] Q (clustered, <domain>): a) <sub-item> b) <sub-item>
+  c) <sub-item> : A: <user's reply> : Resolution: a: confirmed, b:
+  unfilled, c: corrected to "..."
 ```
 
 ## Step 7: Handoff
@@ -303,6 +380,14 @@ analysis and gap-filling.
 - Never classify a requirement as MATCH on the strength of an
   unconfirmed single-source bullet; that's PARTIAL until the user
   confirms it in gap dialogue.
+- Never defer or batch away a CORE requirement's gap question
+  regardless of the Step 6b budget; the verification bar for core/
+  must-have requirements does not flex for speed.
+- Prefer one consolidated checklist question (Step 6a) over several
+  serial single-item questions whenever 2+ PARTIAL/GAP requirements
+  share the same broad capability domain — this is the primary lever
+  for keeping total session time in the 15-20 minute range instead of
+  40+.
 - Never ask a gap question the user has already answered earlier in the
   same session (check the Gap Dialogue Log before asking); if a later
   requirement touches the same underlying fact, reference the earlier

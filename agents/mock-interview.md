@@ -10,7 +10,7 @@ Runs a live Q&A round against the Question Bank in
 `user-data/output/<company>_<role>/interview-plan.md`, then critiques
 each answer against the result-first framing
 (Headline → Effect → Rationale → Operations) defined in
-`skills/interview-prep-format.md`.
+`skills/interview-prep-format/SKILL.md`.
 
 Invoked either directly (an on-demand session) or by a scheduled task
 set up through `/schedule-mock-interview` — see that command for the

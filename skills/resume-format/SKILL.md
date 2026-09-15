@@ -33,6 +33,14 @@ overwritten):
   hiring manager at this seniority than a decades-old degree). The
   2026-07-29 confirmation stands: **Certifications before Education**.
   Do not re-flag this against the newer template's order.
+  **2026-09-12 reversal**: candidate has now directly instructed the
+  opposite — **Education before Certifications** — and this supersedes
+  the 2026-07-29/2026-09-03 confirmation above. Do not revert to
+  Certifications-before-Education, and do not re-flag this order as
+  drift against either the 2026-07-29 or 2026-09-03 history recorded
+  here. See the Required sections list and the Certifications entry
+  below for the updated order and a related space-handling rule the
+  candidate raised in the same conversation.
 - **Client-name line**: the new template merges it into the same line as
   Company/Location. Candidate accepted this merge (see Client names
   below); the prior dedicated-line rule is superseded.
@@ -92,9 +100,13 @@ file, not a reconciliation point the candidate needed to weigh in on.
   certifications, education): Calibri, **11pt**. Only step back down to
   10.5pt if the tailored content exceeds the 2-page max at 11pt; never go
   below 10.5pt or above 11pt.
-- Name (top of page): Calibri, bold, **24pt**, black (no color override —
-  raised from the prior 16-18pt range; navy is retired, see Color
-  below).
+- Name (top of page): Calibri, bold, **22pt**, black, mixed case (not
+  ALL CAPS — the name is rendered exactly as it appears in
+  `user-profile.md`, no case transform applied), no color override.
+  (**Corrected 2026-09-15**: lowered from 24pt to 22pt per direct
+  candidate instruction, given as a manual correction against a
+  produced resume. The 2026-09-03 24pt figure is retired; do not revert
+  to it. Navy is retired, see Color below.)
 - Tagline (directly beneath the name, above the contact line): Calibri,
   regular weight, 11pt, **gray (#444444)** (previously same size as body
   in black; now explicitly gray per the rebuilt template).
@@ -127,9 +139,11 @@ file, not a reconciliation point the candidate needed to weigh in on.
   end.
 - No italics for emphasis in body text (the client/company line is the
   one standing exception); use bold sparingly (name, section headers, job
-  titles/companies, the Professional Summary's opening descriptor and
-  tenure figure, and at most one standout metric per role, not per
-  bullet).
+  titles/companies, and at most one standout metric per role, not per
+  bullet). **Professional Summary is not bold anywhere** (corrected
+  2026-09-15, retiring the prior rule that bolded the opening descriptor
+  phrase and tenure figure — direct candidate instruction against a
+  produced resume; do not revert to bolding any part of the summary).
 
 ## Color
 
@@ -171,9 +185,10 @@ exceptions below; nothing is justified:
    Tagline rule), then the contact line (phone, email, LinkedIn,
    location; centered, single line, separated by vertical bars).
 2. **Professional Summary**: 2-4 lines, no bullets, prose, tailored to
-   the target role's track. Bold the opening descriptor phrase (e.g.
-   "Cyber GRC leader") and the tenure figure (e.g. "12+ years") within
-   the first sentence; bold nothing else in the summary. When the
+   the target role's track. No bold anywhere in the summary (corrected
+   2026-09-15 — the prior rule bolding the opening descriptor phrase and
+   tenure figure is retired per direct candidate instruction; do not
+   reintroduce it). When the
    target JD's title sits above the candidate's actual title (e.g. JD
    says "Director," candidate is "Senior Manager"), use function-level
    language that overlaps with the JD's title vocabulary where
@@ -220,14 +235,18 @@ exceptions below; nothing is justified:
    carve out a separate sub-label for independent-project tools. Always
    its own section, positioned after Professional Experience, never
    folded into Core Skills.
-6. **Certifications**: one per line is fine and expected when the
-   candidate holds many (do not force them onto a single comma-separated
-   line just to save space; cut Technical Skills or bullet count first
-   if space is tight). Positioned **before** Education per the
-   2026-09-03 reconciliation above.
-7. **Education**: one block per institution — institution name (bold)
+6. **Education**: one block per institution — institution name (bold)
    on its own line, degree/field (italic) on the line beneath it. Reverse
-   chronological or as sourced in `master-resume.md`.
+   chronological or as sourced in `master-resume.md`. Positioned
+   **before** Certifications per the 2026-09-12 reversal (see
+   reconciliation log above).
+7. **Certifications**: format flexes with available space now that this
+   section sits last before Work Authorization — one certification per
+   line when space allows (preferred, most readable); fold to a single
+   comma-separated line only when needed to keep the resume within the
+   2-page max, and only after Technical Skills curation and bullet-count
+   trimming have already been applied. Never drop a held certification
+   to save space — fold the list's formatting instead.
 8. **Work Authorization line**: a short divider followed by a single
    line at the very end of the document, after Education, no section
    header of its own (see Work Authorization line below; renamed from
@@ -315,11 +334,13 @@ GRC | TPRM | AI."
 
 Bullet count per role is role-position-aware, not a single flat range:
 
-- **Most recent/current role**: up to **8 bullets** (raised from 7 on
-  2026-08-19 per direct candidate request). This is a ceiling, not a
-  floor — select the strongest available bullets per the
+- **Most recent/current role**: **7-8 bullets** (range widened from a
+  flat 7 on 2026-08-19 per direct candidate request). This is a range,
+  not a single ceiling — select the strongest available bullets per the
   Achievement-Reframing Priority Map; do not pad to 8 with
-  lower-priority bullets when a tailoring genuinely supports fewer.
+  lower-priority bullets when a tailoring genuinely supports fewer, and
+  don't drop below 7 without a genuine reason (insufficient sourced
+  material, not a preference for brevity).
 - **Every other role**: **3-4 bullets**, no exceptions, regardless of
   how much corroborated content exists. Use the Achievement-Reframing
   Priority Map to select the strongest 3-4, not the first 3-4

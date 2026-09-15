@@ -2,20 +2,38 @@
 
 Reference document for how this plugin is put together: skills, agents,
 commands, data flow, and the workflows that tie them together. Written
-2026-09-11, current as of plugin version 0.8.0. This is documentation,
-not a spec — the authoritative rules live in `skills/*/SKILL.md` and
-`agents/*.md`; this file explains how those pieces fit together and
-should be updated (or flagged as stale) whenever a structural change is
-made to the plugin, the same way `resume-format.md`'s baseline is
-maintained deliberately rather than left to drift.
+2026-09-11, **updated 2026-09-15** to reflect the LinkedIn optimization,
+Notion sync activation, and apply-mode (Skyvern-assisted) capabilities
+added that day. Manifest (`plugin.json`) is at version 0.9.0. This is
+documentation, not a spec — the authoritative rules live in
+`skills/*/SKILL.md` and `agents/*.md`; this file explains how those
+pieces fit together and should be updated (or flagged as stale)
+whenever a structural change is made to the plugin, the same way
+`resume-format.md`'s baseline is maintained deliberately rather than
+left to drift.
+
+**Registration gap (open as of 2026-09-15 — see "Open items"):**
+`apply-agent`, `linkedin-optimizer`, `/apply`, and `/linkedin-optimize`
+exist as complete files on disk but are **not listed in `plugin.json`**.
+A file that isn't in the manifest doesn't load in a real session
+regardless of how complete its content is. This document describes the
+full designed system, including these four components, and flags each
+one's registration status explicitly rather than silently treating
+"file exists" as "wired in."
 
 ## What this plugin is
 
-A human-in-the-loop resume and cover letter tailoring system, plus
-company-specific interview prep, built as a Claude Code / Cowork plugin.
+A human-in-the-loop resume and cover letter tailoring system, with
+company-specific interview prep, a LinkedIn profile-optimization branch,
+a Notion tracker sync, and a human-gated apply step (direct fill or a
+Skyvern task-package handoff), built as a Claude Code / Cowork plugin.
 It is the companion to a separate, existing automated job-application
 pipeline; this plugin is used for higher-stakes applications that
 warrant gap dialogue and manual QA rather than a fully automated run.
+Nothing in this plugin submits an application or edits a public profile
+without a per-item, in-session human approval — that boundary is
+enforced at the agent level (see "The trust chain" and the apply-mode
+workflow below), not left to convention.
 
 Two governing design principles run through everything below:
 
@@ -44,8 +62,8 @@ Resume-tailor-plugin/
 │   ├── interview-prep-format/SKILL.md
 │   ├── interview-plan-format/SKILL.md
 │   └── known-gaps/SKILL.md
-├── agents/                   # one .md per agent (13 total)
-├── commands/                 # one .md per slash command (6 total)
+├── agents/                   # one .md per agent (13 registered + 2 built, unregistered)
+├── commands/                 # one .md per slash command (6 registered + 2 built, unregistered)
 ├── user-data/                # candidate's own data — excluded from bundle
 │   ├── reference/             # profile, master corpus, bundles, corrections
 │   ├── raw-corpus/            # old resumes/cover letters, unprocessed
@@ -76,34 +94,49 @@ they couldn't be deleted from this session, safe to delete manually.
 | `interview-plan-format` | Contract for the "how do I walk in ready" document: fixed 7-step build order (job analysis → company deep dive → story bank → question bank → the pitch → final polish → room pointer). |
 | `known-gaps` | Standing register of claims the candidate is not confident making (e.g., in-progress certifications), paired with pre-approved phrasing for claims that are true but easy to overstate. Hard-constraint tier, same as `constraints`. |
 
-## Agents (13)
+## Agents (13 registered + 2 built, unregistered = 15 total)
 
-| Agent | Triggered by | Reads | Writes |
-|---|---|---|---|
-| `intake-agent` | `/setup-profile` | old resumes (suggestions only) | `user-data/reference/user-profile.md` (sole owner) |
-| `corpus-builder` | `/build-reference` (step 1) | `raw-corpus/*`, `user-profile.md`, `corrections-log.md` | `master-resume.md`, `master-metrics-vault.md`, `star-story-bank.md` |
-| `template-extractor` | `/build-reference` (step 1b, parallel to bundle-builder) | `raw-corpus/old-resumes/` | `master-resume.md`'s Structural Observations section (drift report only, never `resume-format.md`) |
-| `bundle-builder` | `/build-reference` (step 2, after corpus-builder) | `master-resume.md`, `master-metrics-vault.md`, `star-story-bank.md` | `user-data/reference/bundles/bundle-<track>.md`, one per target track |
-| `job-analyzer` | `/tailor-application` (step 1) | JD (text/URL), selected bundle, `user-profile.md` | creates the session file; writes JD text, Track Selection, Requirement Mapping (MATCH/PARTIAL/GAP), Gap Dialogue Log |
-| `company-research` | `/tailor-application` (parallel to job-analyzer, once company name known) | live web search | session file's Company Research section (verified-or-omit) |
-| `resume-tailor` | `/tailor-application` (step 2, parallel to coverletter-writer) | session file, selected bundle, `corrections-log.md` | session file's Bullet Plan + JD Coverage Report; `output/<co>_<role>/resume.docx` |
-| `coverletter-writer` | `/tailor-application` (step 2, parallel to resume-tailor) | session file, selected bundle's Cover-Letter Guide, Company Research section | session file's Cover Letter Plan; `output/<co>_<role>/cover_letter.docx` |
-| `critique-agent` | `/tailor-application` (step 3, fresh context, after both drafts complete) | finished resume + cover letter docs, session file, bundles, reference files | session file's Critique Scores section (scored, tiered findings; no drafting authority) |
-| `interview-prep` | `/interview-prep` | session file (if exists) or pasted JD/URL, reference files | `output/<co>_<role>/interview-prep.md` |
-| `interview-plan` | `/interview-plan` | session file (if exists) or pasted JD/URL, reference files, `interview-prep.md` (pointer only) | `output/<co>_<role>/interview-plan.md` |
-| `mock-interview` | direct invocation or `/schedule-mock-interview`'s fired task | `interview-plan.md`'s Question Bank | nothing persisted — live critique loop only |
-| `notion-sync-agent` | **STUB — not wired in** | n/a | n/a — gated behind Step 7 validation (5+ real JDs) + staging DB + scoped connector access |
+| Agent | Registered in `plugin.json`? | Triggered by | Reads | Writes |
+|---|---|---|---|---|
+| `intake-agent` | Yes | `/setup-profile` | old resumes (suggestions only) | `user-data/reference/user-profile.md` (sole owner) |
+| `corpus-builder` | Yes | `/build-reference` (step 1) | `raw-corpus/*`, `user-profile.md`, `corrections-log.md` | `master-resume.md`, `master-metrics-vault.md`, `star-story-bank.md` |
+| `template-extractor` | Yes | `/build-reference` (step 1b, parallel to bundle-builder) | `raw-corpus/old-resumes/` | `master-resume.md`'s Structural Observations section (drift report only, never `resume-format.md`) |
+| `bundle-builder` | Yes | `/build-reference` (step 2, after corpus-builder) | `master-resume.md`, `master-metrics-vault.md`, `star-story-bank.md` | `user-data/reference/bundles/bundle-<track>.md`, one per target track |
+| `job-analyzer` | Yes | `/tailor-application` (step 1) | JD (text/URL), selected bundle, `user-profile.md` | creates the session file; writes JD text, Track Selection, Requirement Mapping (MATCH/PARTIAL/GAP), Gap Dialogue Log |
+| `company-research` | Yes | `/tailor-application` (parallel to job-analyzer, once company name known) | live web search | session file's Company Research section (verified-or-omit) |
+| `resume-tailor` | Yes | `/tailor-application` (step 2, parallel to coverletter-writer) | session file, selected bundle, `corrections-log.md` | session file's Bullet Plan + JD Coverage Report; `output/<co>_<role>/resume.docx` |
+| `coverletter-writer` | Yes | `/tailor-application` (step 2, parallel to resume-tailor) | session file, selected bundle's Cover-Letter Guide, Company Research section | session file's Cover Letter Plan; `output/<co>_<role>/cover_letter.docx` |
+| `critique-agent` | Yes | `/tailor-application` (step 3, fresh context, after both drafts complete) | finished resume + cover letter docs, session file, bundles, reference files | session file's Critique Scores section (scored, tiered findings; no drafting authority) |
+| `apply-agent` | **No — built 2026-09-15, not in manifest** | `/apply` (also unregistered) | session file's Critique Scores + Requirement Mapping/Gap Dialogue Log, finished `.docx` files, `user-profile.md`, `known-gaps.md`, the live posting page (session's browser tools) | session file's Application Log (tier decision, Skyvern package if Tier 2, submission outcome); no direct submit without per-application user approval |
+| `notion-sync-agent` | Yes | invoked by `apply-agent` after an outcome is recorded | `apply-agent`'s handoff (company/role/tier/outcome), session file | scoped field set on the Notion "Job Search Tracker" row (`Status`, `Company`, `Job Description`, `Employment Type`, `Location`, `Date Found`, local file paths, append-only `Notes` line) — see status note below |
+| `linkedin-optimizer` | **No — built 2026-09-15, not in manifest** | `/linkedin-optimize` (also unregistered) | `master-resume.md`, `master-metrics-vault.md`, `skills.json`, `certifications.json`, `user-profile.md` | `user-data/output/linkedin/linkedin-optimization-<ISO date>.md` (proposal only — never writes to LinkedIn) |
+| `interview-prep` | Yes | `/interview-prep` | session file (if exists) or pasted JD/URL, reference files | `output/<co>_<role>/interview-prep.md` |
+| `interview-plan` | Yes | `/interview-plan` | session file (if exists) or pasted JD/URL, reference files, `interview-prep.md` (pointer only) | `output/<co>_<role>/interview-plan.md` |
+| `mock-interview` | Yes | direct invocation or `/schedule-mock-interview`'s fired task | `interview-plan.md`'s Question Bank | nothing persisted — live critique loop only |
 
-## Commands (6)
+**`notion-sync-agent` status (revised 2026-09-15):** no longer a stub.
+Activation threshold reduced from "5+ real JDs" to **1 real JD passing
+Step 7 validation, plus a staging database and a Notion connector with
+write/create-page scope** — both still required together.
+`user-profile.md`'s `notion_sync` flag was set `true` 2026-09-15, but
+the flag alone does not invoke the agent; `apply-agent` invokes it, and
+only after the validation pass above is actually confirmed. A read-only
+or search-only Notion connection cannot execute these writes even with
+the agent unblocked — verify write scope before relying on this
+end-to-end.
 
-| Command | Orchestrates |
-|---|---|
-| `/setup-profile` | `intake-agent` — first-run entry point, populates `user-profile.md` |
-| `/build-reference` | `corpus-builder` → (`template-extractor` ∥ `bundle-builder`, bundle-builder strictly after corpus-builder) |
-| `/tailor-application` | `job-analyzer` → (`company-research` ∥ gap dialogue) → (`resume-tailor` ∥ `coverletter-writer`) → `critique-agent` (fresh context) → report |
-| `/interview-prep` | `interview-prep` agent (logistics/process document) |
-| `/interview-plan` | `interview-plan` agent (narrative/readiness document) |
-| `/schedule-mock-interview` | creates scheduled tasks (via the host platform's trigger tool, never an in-session cron) that later fire `mock-interview` |
+## Commands (6 registered + 2 built, unregistered = 8 total)
+
+| Command | Registered? | Orchestrates |
+|---|---|---|
+| `/setup-profile` | Yes | `intake-agent` — first-run entry point, populates `user-profile.md` |
+| `/build-reference` | Yes | `corpus-builder` → (`template-extractor` ∥ `bundle-builder`, bundle-builder strictly after corpus-builder) |
+| `/tailor-application` | Yes | `job-analyzer` → (`company-research` ∥ gap dialogue) → (`resume-tailor` ∥ `coverletter-writer`) → `critique-agent` (fresh context) → report |
+| `/apply` | **No — built 2026-09-15** | thin wrapper → `apply-agent` (precondition check → read posting → Tier 1/2 decision → fill or Skyvern package → approval gate → `notion-sync-agent` handoff) |
+| `/linkedin-optimize` | **No — built 2026-09-15** | thin wrapper → `linkedin-optimizer` (one-time/occasional, not per-application) → proposal doc → user approves specific lines before any manual LinkedIn edit |
+| `/interview-prep` | Yes | `interview-prep` agent (logistics/process document) |
+| `/interview-plan` | Yes | `interview-plan` agent (narrative/readiness document) |
+| `/schedule-mock-interview` | Yes | creates scheduled tasks (via the host platform's trigger tool, never an in-session cron) that later fire `mock-interview` |
 
 ## The trust chain (why accuracy holds end to end)
 
@@ -145,10 +178,71 @@ flowchart TD
 Every run produces, in `user-data/applications/session_<company>_<role>.md`:
 Job Description, Company Research, Track Selection, Requirement Mapping,
 Gap Dialogue Log, Bullet Plan, JD Coverage Report, Cover Letter Plan,
-Critique Scores. This session file is the single source of truth for
-that application — every agent after `job-analyzer` reads from it rather
+Critique Scores, and — once `/apply` runs against it — an Application
+Log. This session file is the single source of truth for that
+application — every agent after `job-analyzer` reads from it rather
 than re-deriving state, and the final report to the candidate is built
 from it, not reconstructed from memory.
+
+## Apply-mode workflow: `/apply` (built 2026-09-15, unregistered)
+
+Picks up exactly where `/tailor-application` leaves off — it will not
+run against a session file with unresolved Tier 1 critique findings.
+
+```mermaid
+flowchart TD
+    P[Precondition: session file has clean<br/>Critique Scores, resume.docx + cover_letter.docx<br/>are the post-critique versions] --> R
+    R[Step 2: Read the live posting<br/>identify ATS platform + step count] --> T
+    T{Step 3: Tier decision}
+    T -->|Tier 1: single-page,<br/>reliable form e.g. LinkedIn Easy Apply,<br/>simple Greenhouse| F1
+    T -->|Tier 2: multi-step Workday/iCIMS,<br/>or any brittle form<br/>incl. a failed Tier-1 attempt| SK
+    F1[Step 4: Direct field-fill<br/>session-sourced answers only;<br/>sensitive fields stop and ask<br/>unless known-gaps.md pre-approves] --> APR
+    APR{User approval<br/>on THIS application}
+    APR -->|approved| SUB[Submit]
+    APR -->|not approved| STOP1[Stop — no submit]
+    SK[Step 5: Build Skyvern task package<br/>job URL, resume file, custom_prompt,<br/>other_information — written to<br/>session file's Application Log]
+    SK --> UAPR{User reviews package,<br/>then starts the Skyvern run<br/>THEMSELVES}
+    UAPR -->|user starts run outside this session| OUT2[User reports outcome back]
+    SUB --> LOG
+    OUT2 --> LOG
+    LOG[Step 6: Record outcome in<br/>Application Log — status, timestamp, tier] --> NS
+    NS[notion-sync-agent<br/>writes scoped fields to<br/>Job Search Tracker]
+```
+
+**Skyvern is never called directly by this plugin.** There is no live
+Skyvern connector in any session this agent runs in. Tier 2 produces a
+task package matching Skyvern's own "Job Application Recipe" schema
+(dashboard: Recipes → Job Applications; API: `POST
+/v1/recipes/jobs/apply`) and stops — the user starts the actual Skyvern
+run themselves, outside this session, because **Skyvern's own "Apply"
+run submits autonomously once started, with no second confirmation
+checkpoint inside Skyvern itself.** The approval gate this plugin
+enforces happens on the package, before that run starts, not mid-run.
+`apply-agent` only learns the outcome when the user reports it back.
+
+This is also why `apply-agent`/`/apply` are documented here as the
+completed design even though unregistered: "apply mode" in this plugin
+was never meant to mean autonomous submission — it means a human-gated
+direct fill for simple forms, or a human-started, human-reported
+Skyvern handoff for complex ones. That boundary exists in the agent's
+guardrails regardless of registration status.
+
+## LinkedIn optimization workflow: `/linkedin-optimize` (built 2026-09-15, unregistered)
+
+A one-time/occasional branch, not part of the per-application cycle —
+it does not read or write a session file and can run independently of
+`/tailor-application`.
+
+```mermaid
+flowchart TD
+    LP[Precondition: user-profile.md has Name +<br/>Target tracks; master-resume.md has content] --> LO
+    LO[linkedin-optimizer:<br/>Headline → About → Experience entries →<br/>Skills → Featured, each cited to<br/>master-resume.md / master-metrics-vault.md /<br/>skills.json / certifications.json] --> AI
+    AI[ai-fingerprint-checklist run<br/>against full proposal] --> DOC
+    DOC[Write linkedin-optimization-&lt;date&gt;.md<br/>proposal document] --> UAP
+    UAP{User approves<br/>specific sections/lines}
+    UAP -->|approved lines| MANUAL[User applies the edit on<br/>LinkedIn themselves —<br/>agent never writes to LinkedIn]
+    UAP -->|not approved| STOP2[No change made]
+```
 
 **Why resume-tailor and coverletter-writer run in parallel, not
 sequentially:** both depend only on `job-analyzer`'s finished output,
@@ -296,17 +390,35 @@ end to end:**
 
 ## Open items
 
+- **Registration gap (top priority):** `apply-agent`, `linkedin-optimizer`,
+  `/apply`, and `/linkedin-optimize` are complete, guardrail-reviewed
+  files dated 2026-09-15 but are **absent from `plugin.json`'s `agents`
+  and `commands` arrays**. Until added there (and the version bumped per
+  the discipline below, then pushed and reinstalled), neither command
+  will actually load in a real session — "the file exists" is not "the
+  feature works." This is the concrete next step to close out the
+  LinkedIn / apply-mode story described in this document.
 - **`marketplace.json`'s top-level `source` field** is literally the
   string `"..."`, not a real path — predates 2026-09-11's changes and
   still unexplained. Worth checking directly if the marketplace ever
   fails to resolve: a bare `"..."` may be a placeholder that was never
   filled in. Not blocking — the plugin's own `"source": "./"` entry
   resolves correctly regardless.
-- **Notion sync**: intentionally disconnected from `/tailor-application`
-  regardless of `user-profile.md`'s `notion_sync` setting, gated behind
-  `notion-sync-agent.md`'s own activation criteria (Step 7 validation
-  suite across 5+ real JDs, plus a staging database and scoped connector
-  access). Next phase once the current fixes are confirmed stable.
+- **Notion sync** is no longer disconnected — see the status note under
+  "Agents" above. Remaining open sub-item: a normalized job fingerprint
+  (company + title + posting URL) shared between this agent and the
+  separate axionsec-job-engine pipeline, so both check for an existing
+  row before creating one; not yet built. Also blocked, separately: the
+  Google Drive `Resume Link`/`Cover Letter Link` auto-upload feature
+  (no file-content upload tool available in this session's Drive
+  connector, plus an unresolved account-ownership mismatch between
+  `pgvb14@gmail.com` and `garynair@gmail.com`) — parked, not a coding
+  task until both are resolved.
+- **Skyvern remains package-only by design**, not a temporary
+  limitation — see the apply-mode workflow above. There is no plan to
+  add a live Skyvern connector call from inside this plugin; the human
+  start/report step is the intended control, not a placeholder for
+  future automation.
 - **Legacy flat skill files** (`constraints.md`, `resume-format.md`,
   `coverletter-format.md`, `ai-fingerprint-checklist.md`) are harmless
   deprecation stubs but not deleted — `device_bash` could not reach the

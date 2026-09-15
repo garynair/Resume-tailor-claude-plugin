@@ -160,14 +160,18 @@ After critique completes:
 
 ## Notion sync
 
-This command does not invoke `notion-sync-agent` under any
-circumstances, regardless of the `notion_sync` value in
-`user-profile.md`. Per `agents/notion-sync-agent.md`, that agent remains
-disconnected from this flow until its own activation gate (Step 7
-validation suite passing across 5+ real JDs, plus a staging database and
-scoped connector access) is met. If the user asks why their
-`notion_sync: true` setting doesn't seem to be doing anything, explain
-this gate rather than wiring the agent in as a workaround.
+**Revised 2026-09-15**: `notion-sync-agent`'s activation gate was
+reduced to a 1-real-JD validation threshold (matching this candidate's
+actual one-at-a-time workflow) and that validation pass has been
+confirmed against a live Notion write/revert test. `notion_sync: true`
+in `user-profile.md` is active. This command itself still does not
+invoke `notion-sync-agent` directly — that handoff now happens from
+`apply-agent` (see `agents/apply-agent.md` Step 6), after an actual
+application outcome exists to log, not from `/tailor-application`, which
+only produces the drafts. If the user asks why running
+`/tailor-application` alone doesn't update Notion, the answer is that
+`/tailor-application` stops at drafting; `apply-agent` (invoked
+separately, after submission) is what syncs the tracker.
 
 ## Guardrails
 

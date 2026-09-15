@@ -1,12 +1,12 @@
 ---
 name: interview-plan-format
-description: "Authoritative interview-plan output spec: the narrative/readiness document (Job Analysis, Company Deep Dive, Story Bank, Question Bank, The Pitch, Final Polish, What Happens in the Room) that sits alongside interview-prep.md's process/logistics document. Defines step order, sourcing rules for the two STAR story files, and the accuracy rules carried over from interview-prep-format.md."
+description: "Authoritative interview-plan output spec: the narrative/readiness document (Job Analysis, Company Deep Dive, Story Bank, Question Bank, The Pitch, Final Polish, What Happens in the Room) that sits alongside interview-prep.md's process/logistics document. Defines step order, sourcing rules for the two STAR story files, and the accuracy rules carried over from skills/interview-prep-format/SKILL.md."
 ---
 
 # Interview Plan Format
 
 This is the output contract for `agents/interview-plan.md`. It is the
-companion document to `skills/interview-prep-format.md`: that skill
+companion document to `skills/interview-prep-format/SKILL.md`: that skill
 governs the process/rounds/logistics document
 (`user-data/output/<company>_<role>/interview-prep.md`); this skill
 governs the narrative/readiness document
@@ -41,7 +41,7 @@ specifically to prevent that.
 ## Tag conventions (carried over, plus one addition)
 
 Use `[inferred from JD]` and `[inferred]` exactly as defined in
-`skills/interview-prep-format.md`. In addition, for Story Bank content:
+`skills/interview-prep-format/SKILL.md`. In addition, for Story Bank content:
 
 - `[corroborated across N files]` — pulled from
   `user-data/reference/star-story-bank.md`.
@@ -51,8 +51,8 @@ Use `[inferred from JD]` and `[inferred]` exactly as defined in
   certain than that.
 
 **Never fabricate a specific fact, question, or story detail.** The
-no-fabrication rule from `skills/constraints.md` and
-`skills/interview-prep-format.md` applies to every step below without
+no-fabrication rule from `skills/constraints/SKILL.md` and
+`skills/interview-prep-format/SKILL.md` applies to every step below without
 exception.
 
 ## Step 1 — Job Analysis
@@ -131,7 +131,7 @@ Read **both** `user-data/reference/star-story-bank.md` and
 story came from. Prefer a `[corroborated]` story over a
 `[candidate-authored]` one when both cover the same underlying
 achievement equally well; use the corroboration-count tiebreak from
-`skills/constraints.md` when two corroborated variants conflict.
+`skills/constraints/SKILL.md` when two corroborated variants conflict.
 Technical walkthroughs must tie to a tool, framework, or process
 actually named in the JD — not a generic technical story.
 
@@ -142,7 +142,7 @@ than padding with a weaker or less-relevant story.
 ## Step 4 — Question Bank
 
 Reuse the audience-tagging convention from
-`skills/interview-prep-format.md` (`recruiter-screen`,
+`skills/interview-prep-format/SKILL.md` (`recruiter-screen`,
 `hiring-manager`, `peer-tech`, `panel-mixed`) so this does not regress
 the round-by-round targeting that skill already does well.
 
@@ -150,7 +150,7 @@ the round-by-round targeting that skill already does well.
 ## Question Bank
 ### {N}. {Question} — audience: `{audience}`
 {Best-answer draft using Headline → Effect → Rationale → Operations,
-per skills/interview-prep-format.md's result-first framing. Draws only
+per skills/interview-prep-format/SKILL.md's result-first framing. Draws only
 from Job Analysis, Company Deep Dive, and Story Bank content already
 established above — not new, unsourced material.}
 ```
@@ -215,7 +215,7 @@ two documents to keep in sync.
 
 Everything in this format answers to the same
 Accuracy > Relevance > Impact > ATS > Brevity hierarchy and
-no-fabrication rule as `skills/constraints.md` and
-`skills/interview-prep-format.md`. A fabricated metric or invented
+no-fabrication rule as `skills/constraints/SKILL.md` and
+`skills/interview-prep-format/SKILL.md`. A fabricated metric or invented
 company fact is the same class of error whether it appears in a resume
 bullet or a rehearsed spoken answer.

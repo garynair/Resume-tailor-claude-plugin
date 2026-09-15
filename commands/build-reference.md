@@ -40,7 +40,7 @@ and build for.
    order, alignment, spacing, skills-section format, client-name
    placement) separately from content, and reports any drift from the
    current `skills/resume-format/SKILL.md` baseline. This step never writes
-   to `resume-format.md`; it only surfaces observations for the
+   to `skills/resume-format/SKILL.md`; it only surfaces observations for the
    summary in step 4. This step can run in parallel with step 3 below
    since neither depends on the other's output, but both must complete
    before step 4's summary.
@@ -61,7 +61,7 @@ and build for.
    - Which tracks got a bundle and which target tracks (if any) were
      skipped for lack of tagged content.
    - Any structural drift `template-extractor` flagged against the
-     current `resume-format.md` baseline, if applicable.
+     current `skills/resume-format/SKILL.md` baseline, if applicable.
 
 ## Guardrails
 

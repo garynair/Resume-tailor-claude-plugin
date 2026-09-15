@@ -5,20 +5,76 @@ description: "Authoritative cover letter formatting spec: length, structure, hea
 
 # Cover Letter Format
 
+**2026-09-14 update**: corrected three places where this spec had drifted
+from what the generator actually produces (confirmed against a real
+output file, Girish_Nair_RalphLaurenCorporation_TPRMManager_
+CoverLetter.docx): the letterhead name is 24pt, not 18pt; the signature
+name is not bold; and the "Re:" line reads "Re: Application for <Job
+Title>" with no "the". All three are corrected in place below rather than
+the actual behavior being changed to match the old wording, since the
+real output is what candidates have actually been sending. The companion
+pipeline's `cover_letter.py` was updated the same day to match this
+spec's Calibri/left-align/non-justified rules exactly (see Font and Body
+alignment notes below, which previously flagged it as diverging).
+
+**2026-09-03 update**: reconciled against the companion automated
+pipeline's cover-letter generator, which was recently rebuilt alongside
+the resume template in `resume-format.md`. Two changes adopted from that
+rebuild (letterhead, colors); one explicitly rejected on best-practice
+grounds (justified body text) despite the pipeline code using it — see
+Body alignment below.
+
 ## Page setup
 
-- Margins: 0.75" on all four sides (matches `resume-format.md`'s resume
-  margins).
-- Font: Arial, matching the resume's typography, single column, one page.
+- Margins: 0.75" on all four sides (unchanged — matches
+  `resume-format.md`'s resume margins; the pipeline rebuild left cover
+  letter margins as-is even though it changed the resume's to asymmetric
+  0.35"/0.57").
+- Font: **Calibri**, matching the resume's typography (per
+  `resume-format.md`'s Typography note, this plugin uses Calibri for
+  both documents; the companion pipeline's cover-letter code previously
+  hardcoded "Aptos" instead, which didn't match its own resume template's
+  Calibri — fixed 2026-09-14, the companion pipeline now uses Calibri
+  too), single column, one page.
+- **Letterhead (adopted 2026-09-03; alignment reversed 2026-09-13; name
+  size corrected 2026-09-14; name size corrected again 2026-09-15)**: a
+  header at the very top of the letter:
+  - Candidate's name: Calibri, bold, **20pt**, black (not navy), mixed
+    case as it appears in `user-profile.md`. (This line previously said
+    18pt, corrected to 24pt on 2026-09-14 to match actual generator
+    output at the time, then lowered to 20pt on 2026-09-15 per direct
+    candidate instruction against a produced cover letter, matching the
+    same-day 22pt correction to the resume's name size in
+    `resume-format.md`. Do not revert to 24pt.)
+  - Contact line directly beneath it: Calibri, regular, 11pt, black,
+    phone/email/location/LinkedIn separated by vertical bars (same
+    fields and separator style as the resume's contact line).
+  - **Left-aligned (2026-09-13 decision)**, not centered. The original
+    2026-09-03 adoption centered this block to visually match the
+    resume's centered header. Candidate reconsidered on pure
+    readability grounds: with the rest of the letter (address block,
+    body, signature) permanently left-aligned per Body alignment below,
+    a centered block at the top read as a stylistic outlier rather than
+    a unified page, whereas one consistent left margin top-to-bottom is
+    the more contemporary business-letter convention. The resume's own
+    header stays centered per `resume-format.md` — this reversal
+    applies to the cover letter only, and the two documents no longer
+    mirror each other's header alignment by design.
+  - This supersedes the prior "no name/contact repeated here" rule; the
+    letterhead is a deliberate, permanent element of the cover letter,
+    not duplication to avoid.
 - **Spacing (permanent, increased)**: paragraph spacing throughout the
   letter is increased slightly from a tight single-spaced default,
   consistent with the resume's own spacing increase, so the letter
   doesn't read as cramped, with these specific rules:
+  - **Letterhead to date**: clear separation between the contact line
+    and the date below it, so the letterhead reads as its own block
+    before the rest of the header begins.
   - **Date line**: generous space both **before and after** the date
     (roughly 4x a standard single-paragraph spacing value on each side),
-    so it reads as a clearly separated element sitting above the rest of
-    the header, not hugging the top margin or crowding into the address
-    block below it.
+    so it reads as a clearly separated element sitting above the
+    address block, not hugging the letterhead or crowding into the
+    address block below it.
   - **Address block** (Hiring Manager / Company or recruiter placeholder
     / City, State): **tight spacing between these three lines**, since
     together they read as a single address unit, not three separate
@@ -30,9 +86,16 @@ description: "Authoritative cover letter formatting spec: length, structure, hea
   - **Salutation to first body paragraph**: generous spacing, more than
     a standard single-paragraph gap, so the letter's opening line
     doesn't feel like it's crowding the salutation above it.
-- **Body alignment**: **left-aligned throughout, permanent** (supersedes
-  the brief justified experiment). The entire letter body (opening,
-  body, closing), the header block (date, address lines, Re: line,
+- **Body alignment**: **left-aligned throughout, permanent — reaffirmed
+  2026-09-03, and the companion pipeline was brought into line with it
+  2026-09-14.** The companion pipeline's cover-letter code had twice
+  drifted to justified body paragraphs on its own side; this plugin
+  never adopted that, and as of 2026-09-14 the pipeline's own code was
+  fixed to match this rule instead of continuing to diverge. Justified
+  text in a narrow, one-column document produces uneven word-spacing
+  ("rivers") and reads as less professional, not more. The entire letter
+  body (opening, body, closing),
+  the header block (letterhead, date, address lines, Re: line,
   salutation), and the signature block are all left-aligned. No
   justified text anywhere in the cover letter, matching the resume's
   left-alignment rule in `resume-format.md`.
@@ -48,9 +111,14 @@ short.
 
 ## Structure
 
-1. **Header block** (not counted in the word total): date, then a short
-   three-line address block, then the salutation. The header is
-   deliberately minimal:
+1. **Header block** (not counted in the word total): the letterhead (see
+   Page setup above), then the date, then a short three-line address
+   block, then the "Re:" line, then the salutation:
+   - **Letterhead**: candidate's name and contact line, centered, per
+     Page setup above. (As of the 2026-09-03 update, contact information
+     is intentionally repeated here — it did previously live only on the
+     resume, but the letterhead is now a deliberate design element
+     rather than an avoidable duplication.)
    - Date.
    - **Address block (permanent, three separate lines, not one combined
      line)**:
@@ -60,10 +128,7 @@ short.
      [City, State]
      ```
      Each element gets its own line rather than a single comma-separated
-     line. Do not repeat the candidate's own name, phone, email,
-     LinkedIn, or location here; that contact information already lives
-     on the resume and doesn't need to be duplicated in a full
-     letterhead block on the cover letter.
+     line.
    - When the job posting doesn't disclose the hiring company's name
      (e.g., a staffing/recruiting firm posting on behalf of an
      undisclosed client), use the recruiter's own placeholder language
@@ -77,15 +142,20 @@ short.
      [City, State if known]
      ```
      Never fabricate a specific company name that wasn't disclosed.
-   - **"Re:" line (permanent, new)**: directly beneath the address
-     block, before the salutation, add a single reference line stating
-     the exact target job title from the job description:
+   - **"Re:" line**: directly beneath the address block, before the
+     salutation, add a single reference line stating the exact target
+     job title from the job description, not bold:
      ```
-     Re: Application for the role of <Job Title>
+     Re: Application for <Job Title>
      ```
-     for example: "Re: Application for the role of Manager, IT Security,
-     Governance, Risk and Compliance." Use the job title exactly as it
-     appears in the job posting, not a shortened or reworded version.
+     for example: "Re: Application for Manager, IT Security,
+     Governance, Risk and Compliance." (Wording corrected 2026-09-14:
+     this line previously said "Re: Application for the <Job Title>," but
+     actual generator output has never included "the" — corrected to
+     match real behavior. The companion pipeline's cover_letter.py was
+     also updated 2026-09-14 to drop "the" here, so both tools now agree.)
+     Use the job title exactly as it appears in the job posting, not a
+     shortened or reworded version.
    - Salutation: always "Dear Hiring Manager," regardless of whether a
      company name is disclosed. The company or recruiter name goes only
      in the address block above; it is never restated in the body
@@ -144,10 +214,12 @@ short.
    and the candidate's sourced background, not an invented specific plan
    the candidate has no basis for proposing.
 5. **Signature block** (not counted in the word total): "Sincerely," then
-   the candidate's name (from `user-profile.md`). No contact line here
-   either; per the minimal-header rule above, contact information is not
-   duplicated anywhere in the cover letter since it already lives on the
-   resume.
+   the candidate's name (from `user-profile.md`), not bold (corrected
+   2026-09-14 — this line previously said bold, but actual generator
+   output has never bolded the signature name). No contact line here —
+   the letterhead at the top of the letter is where contact information
+   now lives (see Page setup above); it isn't repeated a second time at
+   the bottom.
 
 ## No client names in the body
 

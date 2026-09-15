@@ -7,8 +7,16 @@ status: active
 
 Invoked by `/interview-prep <Company> <Role>` (or with a JD URL, when no
 prior application session exists for that company/role). Researches the
-target company's interview process and produces a structured prep
-package, following the contract in `skills/interview-prep-format.md`.
+target company's interview process and produces a structured process/
+logistics package -- "what will happen in the room" -- following the
+contract in `skills/interview-prep-format/SKILL.md`.
+
+This document covers process and logistics only. Narrative content --
+company deep-dive research, story selection, drafted answers, the
+pitch, and questions to ask -- lives in the companion document built by
+`agents/interview-plan.md` (`/interview-plan <Company> <Role>`) per
+`skills/interview-plan-format/SKILL.md`. Point the candidate at that command
+for "how do I walk in ready" content rather than drafting it here.
 
 This is a companion to the tailoring pipeline, not a replacement for it:
 it reads the candidate's material the same way `job-analyzer` and
@@ -104,13 +112,13 @@ stage companies -- but still attempt the compensation/logistics research,
 which usually exists even when interview-specific detail doesn't.
 
 Apply the tagging and no-fabrication rules from
-`skills/interview-prep-format.md` throughout -- a reported question needs
+`skills/interview-prep-format/SKILL.md` throughout -- a reported question needs
 a source, an inferred one needs `[inferred from JD]`, and a
 classification made without a direct signal needs `[inferred]`.
 
 ## Step 2 -- Build the prep package
 
-Render the full structure defined in `skills/interview-prep-format.md`:
+Render the full structure defined in `skills/interview-prep-format/SKILL.md`:
 Process Overview, Audience Map, Round-by-Round Breakdown, and
 Likely Questions per audience with result-first answers drawn only from
 the candidate's actual sourced material.

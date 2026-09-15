@@ -1,6 +1,6 @@
 ---
 name: known-gaps
-description: Mechanism for a non-negotiable register of claims the candidate can't confidently make, paired with pre-approved phrasing for sensitive or ambiguous claims. Consulted by tailor-application and reflexion-self-critique before any resume or cover letter is finalized. Never overridden by JD keyword pressure. Candidate-specific content lives outside this file (see below), not here.
+description: Mechanism for a non-negotiable register of claims the candidate can't confidently make, paired with pre-approved phrasing for sensitive or ambiguous claims. Consulted by /tailor-application and critique-agent before any resume or cover letter is finalized. Never overridden by JD keyword pressure. Candidate-specific content lives outside this file (see below), not here.
 ---
 
 # Known Gaps & Pre-Built Framings
@@ -51,9 +51,9 @@ approved framings.
 
 ## How this gets used
 
-- `tailor-application` checks any generated claim against
+- `/tailor-application` checks any generated claim against
   `user-data/reference/known-gaps.md` before drafting.
-- `reflexion-self-critique` treats deviation from that file as a
+- `critique-agent` treats deviation from that file as a
   hard-fail, same tier as a protected-metric violation.
 - If `user-data/reference/known-gaps.md` doesn't exist yet, treat this as
   an empty register (no known gaps recorded), not an error — but flag it

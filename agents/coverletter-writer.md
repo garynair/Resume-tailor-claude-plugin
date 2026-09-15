@@ -44,19 +44,18 @@ facet of the same achievement, or use a different achievement, instead.
 
 ## Length and structure
 
-Apply `skills/coverletter-format/SKILL.md` exactly:
-
-- ~200 words (180-220 range), body text only.
-- Structure: opening (problem-first when a Company Signal Line is
-  available, see below: the signal line leads, the candidate-fit
-  sentence answers it; role + single strongest fit reason leads instead
-  when no signal line is available), body (2-3 sourced accomplishments
-  tied to JD requirements, pulled from the bundle's Cover-Letter Guide,
-  prioritizing stories tagged for JD themes that `job-analyzer`
-  identified as MATCH or resolved PARTIAL/GAP items), closing (confident,
-  forward-looking, and naming one concrete first action in the role,
-  genuinely inferable from the JD and the candidate's sourced
-  background, not just an invitation to talk).
+Load and apply `skills/coverletter-format/SKILL.md` live, exactly as
+written — a short, ~200-word letter with an opening, body, and closing
+per that spec (opening is problem-first when a Company Signal Line is
+available, see below; body carries 2-3 sourced accomplishments tied to
+JD requirements, pulled from the bundle's Cover-Letter Guide,
+prioritizing stories tagged for JD themes that `job-analyzer` identified
+as MATCH or resolved PARTIAL/GAP items; closing is confident,
+forward-looking, and names one concrete first action in the role,
+genuinely inferable from the JD and the candidate's sourced background).
+Never restate the authoritative word-count range inline here — load the
+spec fresh each run so this summary can't drift out of sync with the
+canonical figure.
 
 ## Company Signal Line
 
@@ -67,8 +66,8 @@ section (written by `company-research`):
   the `Fact` and bridging it to GRC relevance using the `GRC relevance`
   clause, per the problem-first Company Signal Line rule in
   `skills/coverletter-format/SKILL.md`; the candidate-fit sentence follows as
-  the answer to it. This sentence counts toward the 180-220 word body
-  limit. Exactly one signal line per letter; if the session file somehow
+  the answer to it. This sentence counts toward the body's word-count
+  limit per `skills/coverletter-format/SKILL.md`. Exactly one signal line per letter; if the session file somehow
   carries more than one qualifying fact, use only the strongest.
 - If `Found: false`, or the section doesn't exist (undisclosed-client
   recruiter posting), omit the line entirely and open directly with the

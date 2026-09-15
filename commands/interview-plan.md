@@ -31,7 +31,7 @@ Check `user-data/reference/user-profile.md` exists and has at least the
 
 Invoke `interview-plan` with the company, role, and resolved JD source.
 It writes `user-data/output/<company>_<role>/interview-plan.md`,
-following the fixed step order in `skills/interview-plan-format.md`
+following the fixed step order in `skills/interview-plan-format/SKILL.md`
 (company research before the pitch, never after), and reports any gap
 in sourced material explicitly.
 

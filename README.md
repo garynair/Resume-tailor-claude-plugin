@@ -61,34 +61,67 @@ parallel resume/cover-letter drafting, and a fresh-context critique
 pass, then writes the final `.docx` files to
 `user-data/output/<company>_<role>/`.
 
+## Interview prep
+
+Two companion documents per company/role, plus a separate rehearsal
+module -- kept apart deliberately so neither becomes an unreadable
+single file:
+
+- `/interview-prep <Company> <Role>` -- process overview, audience map,
+  round-by-round breakdown. "What will happen in the room."
+- `/interview-plan <Company> <Role>` -- Job Analysis, Company Deep Dive,
+  Story Bank (reads both `star-story-bank.md` and the candidate-authored
+  `star-story-inbox.md`), Question Bank, The Pitch, Final Polish. "How
+  do I walk in ready." Company research runs before the pitch is
+  drafted, not after, so the pitch references real, specific facts.
+- `/schedule-mock-interview <Company> <Role> <date>` -- sets up
+  rehearsal sessions (via the host platform's scheduled-task feature,
+  never in-session cron) against the live Question Bank, ahead of the
+  real interview date. Can also be run on demand via the
+  `mock-interview` agent.
+
 ## Structure
 
 ```
 skills/            Cross-cutting rules: constraints, resume format,
-                    cover letter format, AI-fingerprint checklist.
+                    cover letter format, AI-fingerprint checklist,
+                    interview-prep format, interview-plan format.
 agents/             intake, corpus-builder, template-extractor,
                     bundle-builder, job-analyzer, company-research,
                     resume-tailor, coverletter-writer, critique-agent,
-                    notion-sync-agent (stub).
+                    notion-sync-agent (ACTIVE as of 2026-09-15 -- see
+                    agents/notion-sync-agent.md for the current gate),
+                    interview-prep, interview-plan, mock-interview,
+                    apply-agent, linkedin-optimizer (both functionally
+                    complete but NOT YET registered in
+                    .claude-plugin/plugin.json as of this writing).
 commands/           /setup-profile, /build-reference,
-                    /tailor-application.
+                    /tailor-application, /interview-prep,
+                    /interview-plan, /schedule-mock-interview, /apply
+                    (human-gated direct-fill or Skyvern-package apply
+                    step), /linkedin-optimize (LinkedIn profile
+                    optimization proposal, never auto-posts) -- the
+                    latter two are also not yet registered in
+                    .claude-plugin/plugin.json.
 user-data/          Your personal data (profile, reference layer, raw
                     corpus, past applications). Never bundled into the
                     plugin package; excluded via plugin.json.
+                    star-story-inbox.md holds candidate-authored STAR
+                    stories not present in the mined corpus.
 ```
 
 ## Design principles
 
 - **Accuracy over everything.** The priority hierarchy is
-  Accuracy > Relevance > Impact > ATS > Brevity (`skills/constraints.md`),
+  Accuracy > Relevance > Impact > ATS > Brevity (`skills/constraints/SKILL.md`),
   and no bullet ships without a traceable source.
-- **Formatting is fixed, content is not.** `skills/resume-format.md` is
+- **Formatting is fixed, content is not.** `skills/resume-format/SKILL.md` is
   the authoritative structural baseline; `resume-tailor` only makes
   content decisions (which bullets, which skills to surface) inside
   that fixed structure, never per-application formatting improvisation.
 - **Conflicts get resolved by evidence, not guessed.** Contradictory
   figures across source documents are resolved by source-corroboration
-  count (`skills/constraints.md`'s data-conflict protocol), logged in
+  count (`skills/constraints/SKILL.md`'s data-conflict protocol), logged in
   `corrections-log.md`, never silently picked.
 - **Nothing ships unchecked.** Every run ends with a fresh-context
   critique pass and an automatic standing confirmation of every

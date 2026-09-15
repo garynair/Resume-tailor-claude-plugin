@@ -74,9 +74,15 @@ Evaluate the resume and cover letter from three distinct personas, in
 this order, each producing its own notes before scoring:
 
 1. **ATS bot** : mechanical pass: does formatting match
-   `skills/resume-format/SKILL.md` exactly (Arial 10.5pt body, left-aligned,
-   navy 11-12pt bold headers, "Page X of Y" footer, no tables/text
-   boxes/graphics, 2-page max)? Does the resume contain the JD's
+   `skills/resume-format/SKILL.md` exactly? Check the resume against
+   that file directly, item by item, rather than against any inline
+   summary. (Corrected 2026-09-15 — this line had previously drifted to
+   the retired pre-09-03 Arial/navy spec precisely because it restated
+   the spec's details inline instead of citing them, which risked this
+   QA gate failing correctly-formatted resumes and passing
+   incorrectly-formatted ones. Re-derive from
+   `skills/resume-format/SKILL.md` directly every run; never restate its
+   details here again.) Does the resume contain the JD's
    exact-match keywords and phrasing where a genuine skill match exists
    (per the Requirement Mapping in the session file)? Would a
    keyword-matching parser correctly extract job titles, dates, and
@@ -108,7 +114,7 @@ black box):
 | Relevance to JD | 25% | Requirement Mapping MATCH items are visible and prominent |
 | Impact/specificity | 20% | Bullets lead with outcome, not just activity; vault metrics used where available; each bullet carries 1-2 sourced metrics per `skills/constraints/SKILL.md`'s Metric density rule, with no fabricated metric added just to satisfy it |
 | ATS compliance | 15% | Format spec followed exactly; keyword match present |
-| Readability/brevity | 10% | 2-3 line cap held (2 lines preferred, no padding to fill a third); no filler; 2-page max; cover letter in the 180-220 word range |
+| Readability/brevity | 10% | 2-3 line cap held (2 lines preferred, no padding to fill a third); no filler; resume length and cover-letter word count per `skills/resume-format/SKILL.md` and `skills/coverletter-format/SKILL.md` |
 
 A sourcing failure on any bullet caps the Accuracy/traceability score at
 2/5 regardless of how many other bullets are clean, since one unsourced

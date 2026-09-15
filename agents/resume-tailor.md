@@ -171,10 +171,12 @@ per Step 4, and log why it was missed).
 Apply every rule in `skills/constraints/SKILL.md` (priority hierarchy, name
 from `user-profile.md`, no em dashes, 2-3 line bullet cap, metric
 density, no repeated metrics across bullets) and every rule in
-`skills/resume-format/SKILL.md` (Arial 11pt body by default, left-aligned
-throughout, navy 12pt bold headers, "Page X of Y" gray footer, 2-page
-max, 0.75" margins, lead-verb rotation, Core Skills/Technical Skills
-formats, client-name line, tagline, Visa Status line, file naming).
+`skills/resume-format/SKILL.md`. Never restate this format spec inline —
+load it fresh each run, since a stale inline summary is what caused a
+past formatting QA gap. (Corrected 2026-09-15 — this line had drifted to
+the pre-09-03 Arial/navy/0.75"-margin spec because it restated the spec
+inline instead of citing it; the live `skills/resume-format/SKILL.md` is
+the source of truth going forward, not any summary written here.)
 Before finalizing:
 
 1. Scan all bullets for duplicate metrics; if two bullets would cite the
@@ -210,9 +212,9 @@ judgment call made inside this agent's drafting pass.
 ## Requirement coverage check (mandatory, before finalizing)
 
 Bullets get dropped for several legitimate reasons: the tiered
-Bullet-count standard (7 current-role / 3-4 other-role cap in
-`resume-format.md`), the 2-3 line length cap, the 2-page overall cap, or
-a metric-collision/data-conflict resolution in `constraints.md`. Each of
+Bullet-count standard in `skills/resume-format/SKILL.md`, the 2-3 line
+length cap, the 2-page overall cap, or a metric-collision/data-conflict
+resolution in `constraints.md`. Each of
 these is a correct, individually-justified decision. But a sequence of
 correct individual drops can still add up to a real problem: a JD
 requirement that Requirement Mapping classified MATCH can end up with no

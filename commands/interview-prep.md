@@ -6,10 +6,12 @@ status: active
 # /interview-prep
 
 Researches a target company's interview process and produces a
-structured, source-cited prep package: process overview, per-round
-breakdown, and likely questions with candidate-specific, result-first
-answers grouped by who's asking (recruiter, hiring manager, technical
-peer, or a mixed panel).
+structured, source-cited process/logistics package: process overview,
+audience map, and per-round breakdown. For company research, story
+selection, drafted answers grouped by who's asking, the pitch, and
+questions to ask, run the companion `/interview-plan <Company> <Role>`
+instead -- that command owns all narrative content per
+`skills/interview-plan-format/SKILL.md`.
 
 ## Step 1: Resolve inputs
 
@@ -31,15 +33,14 @@ stop and direct the user to `/setup-profile` first.
 ## Step 3: Run the agent
 
 Invoke `interview-prep` with the company, role, and resolved JD source.
-It writes the prep package to
+It writes the process/logistics package to
 `user-data/output/<company>_<role>/interview-prep.md` and reports gaps
-in the candidate's source material explicitly rather than glossing over
-them.
+in the round/audience data explicitly rather than glossing over them.
 
 ## Step 4: Present the result
 
 Summarize what was found (process shape, number of rounds, any gaps
-flagged) and point the user to the written file. If any Likely
-Questions answer had to be left unsourced, call that out by name so the
-user can decide whether to prepare it themselves or treat it as a real
-gap to address before the interview.
+flagged) and point the user to the written file. Then offer
+`/interview-plan <Company> <Role>` for the narrative document -- story
+bank, question bank with drafted answers, the pitch, and questions to
+ask -- if it doesn't already exist for this company/role.

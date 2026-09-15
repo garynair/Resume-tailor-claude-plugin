@@ -1,19 +1,28 @@
 ---
 name: interview-prep-format
-description: "Authoritative interview-prep output spec: process overview, audience map, round-by-round breakdown, per-audience likely-question packs with result-first answer framing, and the no-fabrication/tagging rules for research vs. inferred content."
+description: "Authoritative interview-prep output spec: process overview, audience map, round-by-round breakdown, and the no-fabrication/tagging rules for research vs. inferred content. Covers the process/logistics document only -- narrative content (Job Analysis, Company Deep Dive, Story Bank, Question Bank, The Pitch, Final Polish) lives in the companion skills/interview-plan-format/SKILL.md."
 ---
 
 # Interview Prep Format
 
-This is the output contract for `agents/interview-prep.md`. It defines the
-structure the prep package must render in, and the accuracy rules that
-govern what can be asserted vs. what must be tagged as inferred.
+This is the output contract for `agents/interview-prep.md`. It defines
+the structure the process/logistics document must render in, and the
+accuracy rules that govern what can be asserted vs. what must be
+tagged as inferred.
+
+**This document covers "what will happen in the room" only.** The
+companion document, `interview-plan.md`, covers "how do I walk in
+ready" — Job Analysis, Company Deep Dive, Story Bank, Question Bank
+(with drafted answers), The Pitch, and Final Polish, per
+`skills/interview-plan-format/SKILL.md`. Do not draft candidate answers here;
+if this agent is asked for likely-question answer drafting, point at
+`/interview-plan` instead of building it in this document.
 
 ## Tag conventions (do not mix)
 
-- `[inferred from JD]` -- a likely question or claim derived from the job
-  description itself, not from a candidate report, review site, or other
-  external source.
+- `[inferred from JD]` -- a claim or a reported-question paraphrase
+  derived from the job description itself, not from a candidate report,
+  review site, or other external source.
 - `[inferred]` -- a classification (e.g. an audience assignment in the
   Audience Map) made from indirect signals (round duration, title,
   position in the sequence) when the source data doesn't state it
@@ -22,9 +31,9 @@ govern what can be asserted vs. what must be tagged as inferred.
 **Never fabricate a specific question.** If a source says "they asked
 about distributed systems," report that generality -- do not invent a
 specific distributed-systems question and present it as sourced. A
-question generated from JD analysis rather than a real report must carry
-the `[inferred from JD]` tag, every time, with no exceptions for a
-"probably realistic" invented question.
+question paraphrase generated from JD analysis rather than a real
+report must carry the `[inferred from JD]` tag, every time, with no
+exceptions for a "probably realistic" invented question.
 
 ## Process Overview
 
@@ -54,6 +63,11 @@ Classify every discovered round into exactly one of:
 | `peer-tech` | IC technical (live problem-solving, case study, take-home review) | Depth + collaboration on the actual work |
 | `panel-mixed` | Onsite / loop with multiple interviewer types in one block | Cross-cuts the above |
 
+This is the same four-value convention `skills/interview-plan-format/SKILL.md`
+uses for its Question Bank -- keep both in sync if this table ever
+changes, so a question tagged `peer-tech` here and there means the same
+thing in both documents.
+
 When the audience for a round isn't stated, infer cautiously from
 duration, position in the sequence, and any signal in the JD or posting,
 and mark it `[inferred]`. Do not default round 2 to any one audience
@@ -80,72 +94,20 @@ For each round:
 - **What they evaluate:** {specific skills or traits}
 - **Reported questions:**
   - {question} -- [source]
-- **How to prepare:** {1-2 concrete, audience-appropriate actions}
+- **How to prepare:** {1-2 concrete, audience-appropriate actions --
+    point at the relevant Question Bank entries in interview-plan.md
+    rather than drafting new answer content here}
 ```
 
 If round structure is entirely unknown, say so plainly and give the best
 available intel on what to expect based on company size, stage, and role
 level -- clearly labeled as an estimate, not a report.
 
-## Likely Questions (per audience)
-
-Group every discovered and inferred question by the audience that asks
-it, never by question type. Draft candidate-specific answers using the
-candidate's actual sourced material (`user-data/reference/master-resume.md`,
-`user-data/reference/master-metrics-vault.md`, `user-data/reference/star-story-bank.md`,
-`user-data/reference/user-profile.md`) -- never invent an achievement,
-metric, or scope to answer a question, per `skills/constraints.md`'s
-no-fabrication rule. A gap in the source material for a likely question
-is a real gap: name it and move on, don't paper over it with a
-plausible-sounding but unsourced answer.
-
-For every answer, use result-first framing:
-
-1. **Headline** -- the result, decision, or point.
-2. **Effect** -- why it mattered to the business, system, users, or team.
-3. **Rationale** -- what tradeoff or constraint shaped the choice.
-4. **Operations** -- what the candidate actually did, with enough detail
-   to be credible under a follow-up question.
-
-Senior, technical, and leadership answers need all four. A short
-recruiter-screen answer can compress this, but should still open with
-the headline, not a narrative windup.
-
-### Audience: `recruiter-screen`
-
-Cover at minimum: the "walk me through your CV / why are you looking"
-narrative; a concrete comp range anchored to whatever compensation
-target the candidate has recorded, with a clean deferral script if
-market data is thin; a specific (not generic) "why this company" tied to
-a real, dated signal about the company; location/remote/visa position;
-timeline and notice period as numbers, not vibes; and any background
-element (gap, transition, pivot) addressed honestly and
-forward-looking -- never defensively.
-
-### Audience: `hiring-manager`
-
-Cover: scope alignment to the actual role as posted, not a generic
-version of the candidate's title; a specific reason this role over a
-lateral move elsewhere; and any leadership/ownership signal the source
-material actually supports.
-
-### Audience: `peer-tech`
-
-Cover: depth on the specific stack/domain named in the JD, using
-result-first framing on real past work; and one candid, specific
-"tell me about a time it went wrong" answer, since a too-polished
-failure story reads as evasive to a technical panel.
-
-### Audience: `panel-mixed`
-
-Prep the union of the above, weighted toward whichever sub-audiences the
-round description suggests are actually in the room.
-
-## Accuracy carries through from `constraints.md`
+## Accuracy carries through from `skills/constraints/SKILL.md`
 
 Everything in this format still answers to the plugin's
 Accuracy > Relevance > Impact > ATS > Brevity hierarchy and the
-no-fabrication rule in `skills/constraints.md`. An interview-prep answer
-is not exempt from either just because it's spoken rather than written --
-a fabricated metric in a rehearsed answer is the same class of error as
-one printed on a resume.
+no-fabrication rule in `skills/constraints/SKILL.md`. A reported question or
+round detail is not exempt from either just because it's process
+information rather than a drafted answer -- a fabricated "known quirk"
+is the same class of error as a fabricated resume metric.

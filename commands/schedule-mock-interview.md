@@ -57,7 +57,7 @@ user-data/output/{company}_{role}/interview-plan.md — pull the live
 Question Bank at fire time, not a copy, since the candidate may have
 updated interview-plan.md since this was scheduled. Invoke the
 mock-interview agent from the resume-tailor-plugin plugin to run the
-session per skills/interview-prep-format.md's result-first framing.
+session per skills/interview-prep-format/SKILL.md's result-first framing.
 ```
 
 Use a one-time firing (`run_once_at`, not a recurring cron expression)

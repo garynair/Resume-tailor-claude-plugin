@@ -9,7 +9,7 @@ Invoked by `/interview-plan <Company> <Role>`. Builds the
 narrative/readiness document — the "how do I walk in ready" companion
 to `agents/interview-prep.md`'s "what will happen in the room" document
 — following the fixed step order and contract in
-`skills/interview-plan-format.md`.
+`skills/interview-plan-format/SKILL.md`.
 
 This is a companion to both the tailoring pipeline and
 `interview-prep`, not a replacement for either. Like `interview-prep`,
@@ -66,7 +66,7 @@ paste the JD text directly.
 
 ## Build sequence
 
-Follow `skills/interview-plan-format.md`'s seven steps **in order**,
+Follow `skills/interview-plan-format/SKILL.md`'s seven steps **in order**,
 writing the section for each step before starting the next — do not
 draft Step 5 (The Pitch) before Step 2 (Company Deep Dive) is on the
 page, even in scratch form. Apply that skill's tag conventions and
