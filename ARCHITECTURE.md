@@ -50,31 +50,42 @@ Two governing design principles run through everything below:
 ## Directory structure
 
 ```
-Resume-tailor-plugin/
-├── .claude-plugin/
-│   ├── plugin.json           # skills/agents/commands manifest + version
-│   └── marketplace.json      # local marketplace listing + version
-├── skills/                   # canonical rule files (see below)
-│   ├── constraints/SKILL.md
-│   ├── resume-format/SKILL.md
-│   ├── coverletter-format/SKILL.md
-│   ├── ai-fingerprint-checklist/SKILL.md
-│   ├── interview-prep-format/SKILL.md
-│   ├── interview-plan-format/SKILL.md
-│   └── known-gaps/SKILL.md
-├── agents/                   # one .md per agent (13 registered + 2 built, unregistered)
-├── commands/                 # one .md per slash command (6 registered + 2 built, unregistered)
-├── user-data/                # candidate's own data — excluded from bundle
-│   ├── reference/             # profile, master corpus, bundles, corrections
-│   ├── raw-corpus/            # old resumes/cover letters, unprocessed
-│   ├── applications/          # one session_<company>_<role>.md per JD
-│   └── output/                # one <company>_<role>/ folder per JD
-└── _backups/                 # timestamped pre-edit snapshots (this session's convention)
+Resume-Tailor-Claude/                # parent directory — not itself a git repo
+├── Resume-tailor-plugin/            # THIS repo (public on GitHub — see below)
+│   ├── .claude-plugin/
+│   │   ├── plugin.json           # skills/agents/commands manifest + version
+│   │   └── marketplace.json      # local marketplace listing + version
+│   ├── skills/                   # canonical rule files (see below)
+│   │   ├── constraints/SKILL.md
+│   │   ├── resume-format/SKILL.md
+│   │   ├── coverletter-format/SKILL.md
+│   │   ├── ai-fingerprint-checklist/SKILL.md
+│   │   ├── interview-prep-format/SKILL.md
+│   │   ├── interview-plan-format/SKILL.md
+│   │   └── known-gaps/SKILL.md
+│   ├── agents/                   # one .md per agent (13 registered + 2 built, unregistered)
+│   ├── commands/                 # one .md per slash command (6 registered + 2 built, unregistered)
+│   └── _backups/                 # timestamped pre-edit snapshots (this session's convention)
+└── user-data/                     # candidate's own data — see below
+    ├── reference/             # profile, master corpus, bundles, corrections
+    ├── raw-corpus/            # old resumes/cover letters, unprocessed
+    ├── applications/          # one session_<company>_<role>.md per JD
+    └── output/                # one <company>_<role>/ folder per JD
 ```
 
-`excluded_from_bundle: ["user-data/"]` in `plugin.json` means the
-candidate's actual data never ships as part of the plugin package —
-only the rule files, agents, and commands do.
+`user-data/` is deliberately a **sibling** of this plugin directory, not
+nested inside it — this repo is public (see "Known issues fixed
+2026-09-11" below), and keeping candidate data structurally outside the
+repo boundary means it can never end up in a commit even by accident,
+regardless of `.gitignore` correctness. `excluded_from_bundle:
+["user-data/"]` in `plugin.json` is a second, belt-and-suspenders
+statement of the same intent for when the plugin is packaged/installed
+elsewhere. Every agent and command that reads or writes candidate data
+uses the absolute path
+(`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/...`) rather than a path
+relative to the plugin root or the invoking session's working directory
+— see "Known issues fixed 2026-09-16" below for why that distinction
+matters.
 
 ## Skills (7) — canonical rule files
 
@@ -387,6 +398,37 @@ end to end:**
   committed (`git log -- user-data/` returned nothing) and is gitignored
   going forward, same treatment now extended to the `known-gaps` split
   above.
+
+## Known issues fixed 2026-09-16
+
+- **cwd-relative `user-data/` path bug**: every command and agent
+  referenced candidate data with a bare relative path (e.g.
+  `user-data/reference/user-profile.md`), which resolves against
+  whatever directory the invoking Claude Code session's cwd happens to
+  be — not against this plugin's install location, and not against
+  `$CLAUDE_PLUGIN_ROOT` either, since neither was ever substituted in.
+  This plugin is also used from two sibling projects (Career-Pilot,
+  Axionsec-job-search-engine) whose sessions are cwd'd into their own
+  repos, not this one. Running `/tailor-application` from one of those
+  sessions therefore looked for `<other-repo>/user-data/...`, found
+  nothing, and correctly (per its own no-fabrication safety design)
+  refused rather than guess — surfacing as "no user-profile.md or
+  master-resume.md anywhere in this session" even though both files
+  were present and untouched at the real location. Fixed by repointing
+  all 25 affected `agents/*.md`, `commands/*.md`, and `skills/*/SKILL.md`
+  files to the absolute path
+  `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/...`.
+- **Considered and rejected: `${CLAUDE_PLUGIN_ROOT}/user-data/...`.**
+  This placeholder does substitute correctly inside command/agent
+  markdown (confirmed against the plugins-reference docs), but
+  `user-data/` is a sibling of `Resume-tailor-plugin/`, not a child of
+  it (see "Directory structure" above) — so this pattern would have
+  resolved to a nonexistent path one level too deep, silently
+  reintroducing the same class of bug. It would also have suggested
+  nesting `user-data/` under the plugin root, which conflicts with the
+  deliberate public-repo safety boundary described above. The absolute
+  path was the correct fix precisely because it matches how
+  Career-Pilot and Axionsec already reference this same directory.
 
 ## Open items
 

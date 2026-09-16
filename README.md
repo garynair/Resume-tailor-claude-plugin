@@ -43,10 +43,10 @@ install flow. See `plugin.json` for the full manifest.
 
 1. `/setup-profile` — collects your name, contact info, target job
    tracks (ranked), certifications, and standing formatting preferences
-   into `user-data/reference/user-profile.md`.
+   into `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md`.
 2. Drop your old resumes and cover letters into
-   `user-data/raw-corpus/old-resumes/` and
-   `user-data/raw-corpus/old-coverletters/` (`.docx` or `.pdf`).
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/raw-corpus/old-resumes/` and
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/raw-corpus/old-coverletters/` (`.docx` or `.pdf`).
 3. `/build-reference` — consolidates that corpus into the reference
    layer (`master-resume.md`, `master-metrics-vault.md`,
    `star-story-bank.md`) and builds one bundle per target track. If the
@@ -59,7 +59,7 @@ install flow. See `plugin.json` for the full manifest.
 selection, requirement mapping, gap dialogue for anything unsourced,
 parallel resume/cover-letter drafting, and a fresh-context critique
 pass, then writes the final `.docx` files to
-`user-data/output/<company>_<role>/`.
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/`.
 
 ## Interview prep
 
@@ -109,6 +109,14 @@ user-data/          Your personal data (profile, reference layer, raw
                     star-story-inbox.md holds candidate-authored STAR
                     stories not present in the mined corpus.
 ```
+
+Note: on disk, `user-data/` is a *sibling* of this plugin directory
+(`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/`), not nested inside it,
+even though the tree above shows it alongside `skills/`/`agents/`/`commands/`
+for readability. Every command and agent that reads or writes candidate
+data uses that absolute path rather than a path relative to the plugin
+root or the invoking session's working directory -- see the 2026-09-16
+fix in `ARCHITECTURE.md`'s Known Issues section for why.
 
 ## Design principles
 
