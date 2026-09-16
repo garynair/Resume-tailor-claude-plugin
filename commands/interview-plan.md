@@ -14,7 +14,7 @@ candidate actually says.
 
 ## Step 1: Resolve inputs
 
-- If `user-data/applications/session_<company>_<role>.md` exists, use
+- If `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/applications/session_<company>_<role>.md` exists, use
   it as the primary source for the JD and requirement mapping.
 - If it doesn't exist, and the user supplied a JD or URL alongside the
   command, proceed from that directly (read-only — no session file,
@@ -23,14 +23,14 @@ candidate actually says.
 
 ## Step 2: Precondition check
 
-Check `user-data/reference/user-profile.md` exists and has at least the
+Check `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md` exists and has at least the
 `Name:` field populated. If it doesn't, stop and direct the user to
 `/setup-profile` first.
 
 ## Step 3: Run the agent
 
 Invoke `interview-plan` with the company, role, and resolved JD source.
-It writes `user-data/output/<company>_<role>/interview-plan.md`,
+It writes `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/interview-plan.md`,
 following the fixed step order in `skills/interview-plan-format/SKILL.md`
 (company research before the pitch, never after), and reports any gap
 in sourced material explicitly.

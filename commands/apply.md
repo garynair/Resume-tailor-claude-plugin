@@ -12,7 +12,7 @@ front of the employer.
 
 ## Step 1: Resolve the target session
 
-Identify `user-data/applications/session_<company>_<role>.md` from the
+Identify `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/applications/session_<company>_<role>.md` from the
 argument the user gave (a slug, a company/role name, or a direct file
 reference). If the user gave no argument and more than one session file
 exists with a completed Critique Scores section, list the candidates

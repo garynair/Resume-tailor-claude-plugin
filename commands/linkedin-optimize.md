@@ -13,9 +13,9 @@ itself.
 
 ## Step 1: Precondition check
 
-Same check as `/tailor-application`: `user-data/reference/user-profile.md`
+Same check as `/tailor-application`: `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md`
 has `Name:` and `Target tracks (ranked):` populated, and
-`user-data/reference/master-resume.md` has content. If either is
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/master-resume.md` has content. If either is
 missing, stop and direct the user to `/setup-profile` and/or
 `/build-reference` first.
 
@@ -24,7 +24,7 @@ missing, stop and direct the user to `/setup-profile` and/or
 Run `agents/linkedin-optimizer.md` end to end. It reads the target-track
 ranking, `master-resume.md`, `master-metrics-vault.md`, `skills.json`,
 and `certifications.json`, and writes
-`user-data/output/linkedin/linkedin-optimization-<ISO date>.md`.
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/linkedin/linkedin-optimization-<ISO date>.md`.
 
 ## Step 3: Present for approval
 

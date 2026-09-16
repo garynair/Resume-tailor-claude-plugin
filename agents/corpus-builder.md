@@ -12,16 +12,16 @@ files: `master-resume.md`, `master-metrics-vault.md`, and
 `star-story-bank.md`. If the raw corpus is empty or too thin to work
 with, falls back to a structured interview instead of inventing content.
 
-Requires `user-data/reference/user-profile.md` to already be populated
+Requires `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md` to already be populated
 (target tracks in particular); if it isn't, stop and direct the user to
 `/setup-profile` first.
 
 ## Inputs
 
-- `user-data/raw-corpus/old-resumes/*.docx` / `*.pdf`
-- `user-data/raw-corpus/old-coverletters/*.docx` / `*.pdf`
-- `user-data/reference/user-profile.md` (for target tracks and name)
-- `user-data/reference/corrections-log.md`, if it already has entries
+- `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/raw-corpus/old-resumes/*.docx` / `*.pdf`
+- `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/raw-corpus/old-coverletters/*.docx` / `*.pdf`
+- `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md` (for target tracks and name)
+- `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/corrections-log.md`, if it already has entries
   from a prior run (never reintroduce a retired figure or claim listed
   there)
 
@@ -193,7 +193,7 @@ and a track tag.
 
 ## Cold-start fallback: structured interview
 
-If `user-data/raw-corpus/old-resumes/` and `old-coverletters/` are both
+If `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/raw-corpus/old-resumes/` and `old-coverletters/` are both
 empty (or contain only unparseable scans), do not fabricate a corpus.
 Instead, run a structured interview, one target track at a time (in the
 ranked order from `user-profile.md`):

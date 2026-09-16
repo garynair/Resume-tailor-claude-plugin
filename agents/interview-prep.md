@@ -20,26 +20,26 @@ for "how do I walk in ready" content rather than drafting it here.
 
 This is a companion to the tailoring pipeline, not a replacement for it:
 it reads the candidate's material the same way `job-analyzer` and
-`resume-tailor` do, but never edits `user-data/reference/` and never
+`resume-tailor` do, but never edits `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/` and never
 writes a resume or cover letter. Its only output is the prep document.
 
 ## Inputs
 
 1. **Company name** and **role title** (required).
 2. **Application session file**, if one exists at
-   `user-data/applications/session_<company>_<role>.md` -- read for the
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/applications/session_<company>_<role>.md` -- read for the
    JD, the requirement-mapping table, and any gap-dialogue answers
    already on record. This is the preferred source; it means the
    candidate has already been through gap dialogue for this JD, so
    PARTIAL/GAP items are already resolved rather than newly discovered
    here.
-3. **Reference material** -- `user-data/reference/master-resume.md`,
-   `user-data/reference/master-metrics-vault.md`,
-   `user-data/reference/star-story-bank.md`,
-   `user-data/reference/user-profile.md` -- for proof points and
+3. **Reference material** -- `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/master-resume.md`,
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/master-metrics-vault.md`,
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/star-story-bank.md`,
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md` -- for proof points and
    candidate context.
 4. **Prior prep document**, if one exists at
-   `user-data/output/<company>_<role>/interview-prep.md` -- read and
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/interview-prep.md` -- read and
    update it rather than starting over, preserving anything the
    candidate has already annotated by hand.
 
@@ -124,7 +124,7 @@ Likely Questions per audience with result-first answers drawn only from
 the candidate's actual sourced material.
 
 Write the result to
-`user-data/output/<company>_<role>/interview-prep.md`, creating the
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/interview-prep.md`, creating the
 application output folder if it doesn't already exist from a prior
 `/tailor-application` run for the same company/role.
 

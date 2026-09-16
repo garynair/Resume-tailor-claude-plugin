@@ -8,9 +8,9 @@ description: "Authoritative interview-plan output spec: the narrative/readiness 
 This is the output contract for `agents/interview-plan.md`. It is the
 companion document to `skills/interview-prep-format/SKILL.md`: that skill
 governs the process/rounds/logistics document
-(`user-data/output/<company>_<role>/interview-prep.md`); this skill
+(`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/interview-prep.md`); this skill
 governs the narrative/readiness document
-(`user-data/output/<company>_<role>/interview-plan.md`).
+(`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/interview-plan.md`).
 
 **Do not merge these two documents.** They serve different moments —
 interview-prep.md is "what will happen in the room," interview-plan.md
@@ -44,9 +44,9 @@ Use `[inferred from JD]` and `[inferred]` exactly as defined in
 `skills/interview-prep-format/SKILL.md`. In addition, for Story Bank content:
 
 - `[corroborated across N files]` — pulled from
-  `user-data/reference/star-story-bank.md`.
+  `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/star-story-bank.md`.
 - `[candidate-authored]` — pulled from
-  `user-data/reference/star-story-inbox.md`. Single-source, same trust
+  `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/star-story-inbox.md`. Single-source, same trust
   tier as a resolved gap-dialogue answer. Never presented as more
   certain than that.
 
@@ -126,8 +126,8 @@ correct outcome, not a failure.
 (two to three total)
 ```
 
-Read **both** `user-data/reference/star-story-bank.md` and
-`user-data/reference/star-story-inbox.md`, and cite which file each
+Read **both** `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/star-story-bank.md` and
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/star-story-inbox.md`, and cite which file each
 story came from. Prefer a `[corroborated]` story over a
 `[candidate-authored]` one when both cover the same underlying
 achievement equally well; use the corroboration-count tiebreak from

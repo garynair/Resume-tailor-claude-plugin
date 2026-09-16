@@ -8,16 +8,16 @@ status: active
 Runs a full application-tailoring pass for one job description: analysis,
 gap dialogue, drafting, and independent critique. Produces a session
 file (single source of truth for the run), a JD Details document, and a
-final resume + cover letter in `user-data/output/<company>_<role>/`.
+final resume + cover letter in `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/`.
 
 ## Step 1: Precondition check
 
-Check `user-data/reference/user-profile.md` exists and has at least the
+Check `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md` exists and has at least the
 `Name:` field populated. If it doesn't, stop immediately and direct the
 user to run `/setup-profile` first; do not proceed with a blank or
 guessed name, per the name-sourcing rule in `skills/constraints/SKILL.md`.
 
-Also check `user-data/reference/master-resume.md` has content (i.e.,
+Also check `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/master-resume.md` has content (i.e.,
 `/build-reference` has run at least once). If it's still empty, stop and
 direct the user to `/build-reference` first; there is nothing to source
 tailored bullets from otherwise.
@@ -27,9 +27,9 @@ tailored bullets from otherwise.
 Invoke `job-analyzer` with the JD or URL the user provided. This agent:
 
 - Resolves the JD text and creates
-  `user-data/applications/session_<company>_<role>.md`.
+  `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/applications/session_<company>_<role>.md`.
 - Writes a standalone JD Details document
-  (`user-data/output/<company>_<role>/<Name>_<Company>_<Role>_JD.docx`)
+  (`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/<Name>_<Company>_<Role>_JD.docx`)
   capturing Designation, Company, Location, OnSite/Remote, Compensation,
   and JD Link, followed by the full JD text as inputted. See
   `agents/job-analyzer.md` Step 3.
@@ -69,8 +69,8 @@ Both agents:
 
 Each agent produces its output document once drafting is finalized:
 
-- `user-data/output/<company>_<role>/resume.docx`
-- `user-data/output/<company>_<role>/cover_letter.docx`
+- `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/resume.docx`
+- `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/cover_letter.docx`
 
 (folder slug matches the session file's `<company>_<role>` naming).
 
@@ -126,7 +126,7 @@ After critique completes:
    back to `resume-tailor`/`coverletter-writer` for a targeted revision
    pass rather than shipping known blocking issues.
 2. Once there are no unresolved Tier 1 findings, confirm the final
-   documents in `user-data/output/<company>_<role>/` are current (i.e.,
+   documents in `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/` are current (i.e.,
    if a revision pass ran, the `.docx` files reflect the revised
    content, not the pre-critique draft).
 3. **Present the JD Coverage Report to the user, unprompted, every time**

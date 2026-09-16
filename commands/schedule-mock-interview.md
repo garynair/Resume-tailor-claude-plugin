@@ -21,7 +21,7 @@ instead — do not pretend to schedule something that can't fire later.
 ## Step 1: Resolve inputs
 
 - **Company** and **role** (required) — used to locate
-  `user-data/output/<company>_<role>/interview-plan.md`.
+  `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/interview-plan.md`.
 - **Interview date** (required) — the actual interview date/time the
   candidate gave. Ask if not supplied; do not guess one.
 - Confirm `interview-plan.md` exists for this company/role and has a
@@ -53,7 +53,7 @@ everything the fresh session needs:
 ```
 Run a mock-interview session for {Company}, {Role}. Mode: {cold |
 targeted:<audience>}. Read the Question Bank from
-user-data/output/{company}_{role}/interview-plan.md — pull the live
+/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/{company}_{role}/interview-plan.md — pull the live
 Question Bank at fire time, not a copy, since the candidate may have
 updated interview-plan.md since this was scheduled. Invoke the
 mock-interview agent from the resume-tailor-plugin plugin to run the

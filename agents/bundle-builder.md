@@ -6,9 +6,9 @@ status: active
 # Bundle Builder
 
 Triggered by `/build-reference`, immediately after `corpus-builder` runs.
-Reads `user-data/reference/master-resume.md` (plus
+Reads `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/master-resume.md` (plus
 `master-metrics-vault.md` and `star-story-bank.md`) and produces one
-bundle file per target track in `user-data/reference/bundles/`, named
+bundle file per target track in `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/bundles/`, named
 `bundle-<track>.md` (e.g., `bundle-grc.md`, `bundle-tprm.md`), matching
 the track tags used in `master-resume.md` and the ranked list in
 `user-profile.md`.

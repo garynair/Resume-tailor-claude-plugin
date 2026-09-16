@@ -6,7 +6,7 @@ status: active
 # Intake Agent
 
 Triggered by `/setup-profile`. Collects the candidate's standing profile
-and writes it to `user-data/reference/user-profile.md`. This is the only
+and writes it to `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md`. This is the only
 agent in the plugin permitted to write to that file; every other agent
 treats it as read-only (per the name-sourcing rule in
 `skills/constraints/SKILL.md`).
@@ -36,7 +36,7 @@ agent trusts without re-checking.
 5. **Location** (city, state is sufficient; ask if they want it on the
    resume at all, since some candidates omit it)
 6. **Target tracks (ranked)** : ask which of the existing bundle tracks
-   (see `user-data/reference/bundles/`, currently GRC, IAM, PM, SecOps,
+   (see `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/bundles/`, currently GRC, IAM, PM, SecOps,
    TPRM) apply, and in what priority order. If the user names a track
    with no existing bundle, note it as new and flag that `/build-reference`
    will need to run `bundle-builder` for it once the corpus supports it.
@@ -61,7 +61,7 @@ agent trusts without re-checking.
 ## Sourcing existing data
 
 Before asking each field from scratch, it's fine to check
-`user-data/raw-corpus/old-resumes/` for a plausible existing value (most
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/raw-corpus/old-resumes/` for a plausible existing value (most
 recent file by name/date is a reasonable starting point) and present it
 back to the user as a suggestion to confirm, correct, or reject. Never
 write a sourced-from-old-resume value into `user-profile.md` without
@@ -73,7 +73,7 @@ never an auto-fill.
 
 ## Output
 
-Write to `user-data/reference/user-profile.md` in this exact structure
+Write to `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md` in this exact structure
 (overwrite the whole file; this agent owns it entirely):
 
 ```markdown

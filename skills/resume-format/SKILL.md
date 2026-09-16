@@ -408,7 +408,7 @@ placement):
    divider — the rebuilt template uses a full-width, very light hairline
    instead). 11pt space before the divider paragraph, 2pt space after.
 2. **The line itself**, stating the candidate's status exactly as
-   confirmed in `user-data/reference/user-profile.md` or direct user
+   confirmed in `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md` or direct user
    instruction, in the short form used by the rebuilt template, e.g.:
    ```
    Work Authorization: U.S. Citizen

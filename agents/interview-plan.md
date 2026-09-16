@@ -13,7 +13,7 @@ to `agents/interview-prep.md`'s "what will happen in the room" document
 
 This is a companion to both the tailoring pipeline and
 `interview-prep`, not a replacement for either. Like `interview-prep`,
-it never edits `user-data/reference/` and never writes a resume or
+it never edits `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/` and never writes a resume or
 cover letter. Its only output is `interview-plan.md`.
 
 ## Why this exists as a separate document and agent
@@ -30,21 +30,21 @@ focused on what the candidate actually says.
 
 1. **Company name** and **role title** (required).
 2. **Application session file**, if one exists at
-   `user-data/applications/session_<company>_<role>.md` — same
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/applications/session_<company>_<role>.md` — same
    preferred source as `interview-prep`, for the JD and any
    already-resolved gap-dialogue answers.
-3. **Reference material** — `user-data/reference/master-resume.md`,
-   `user-data/reference/master-metrics-vault.md`,
-   `user-data/reference/star-story-bank.md`,
-   `user-data/reference/star-story-inbox.md`,
-   `user-data/reference/user-profile.md`.
-4. **Prior company research**, if `user-data/applications/session_<company>_<role>.md`
+3. **Reference material** — `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/master-resume.md`,
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/master-metrics-vault.md`,
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/star-story-bank.md`,
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/star-story-inbox.md`,
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md`.
+4. **Prior company research**, if `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/applications/session_<company>_<role>.md`
    already has a Company Research section from `agents/company-research.md`
    — read it, but do not treat it as sufficient for Step 2 below; that
    agent's mandate is one narrow, verified-or-omit fact for a cover
    letter, not the broader deep dive this document needs.
 5. **Prior interview-plan.md**, if one exists at
-   `user-data/output/<company>_<role>/interview-plan.md` — read and
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/interview-plan.md` — read and
    update it rather than starting over, preserving anything the
    candidate has annotated by hand.
 6. **Companion interview-prep.md**, if one exists in the same output
@@ -96,7 +96,7 @@ no-fabrication rule throughout.
    <Role>`.
 
 Write the result to
-`user-data/output/<company>_<role>/interview-plan.md`, creating the
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/interview-plan.md`, creating the
 application output folder if it doesn't already exist.
 
 ## Report gaps plainly

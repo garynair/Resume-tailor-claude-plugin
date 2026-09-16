@@ -7,7 +7,7 @@ status: active
 
 A recurring rehearsal activity, not a step inside `interview-plan.md`.
 Runs a live Q&A round against the Question Bank in
-`user-data/output/<company>_<role>/interview-plan.md`, then critiques
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/interview-plan.md`, then critiques
 each answer against the result-first framing
 (Headline → Effect → Rationale → Operations) defined in
 `skills/interview-prep-format/SKILL.md`.
@@ -41,7 +41,7 @@ change either way.
 ## Inputs
 
 1. **Company and role** (required) — used to locate
-   `user-data/output/<company>_<role>/interview-plan.md`.
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/interview-plan.md`.
 2. **Mode** — `cold` (no prep, no advance notice of which question is
    coming) or `targeted:<audience>` (restrict to one of
    `recruiter-screen` / `hiring-manager` / `peer-tech` / `panel-mixed`).
@@ -95,4 +95,4 @@ claim not present in `interview-plan.md`, `star-story-bank.md`, or
 `star-story-inbox.md`, flag it as unsourced per `skills/constraints/SKILL.md`'s
 no-fabrication rule rather than treating it as new material to write
 back into any reference file — this agent never edits
-`user-data/reference/` or `user-data/output/`.
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/` or `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/`.

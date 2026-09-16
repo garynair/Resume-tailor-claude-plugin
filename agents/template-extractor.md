@@ -5,7 +5,7 @@ status: active
 
 # Template Extractor
 
-Scans `user-data/raw-corpus/old-resumes/` for structural conventions
+Scans `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/raw-corpus/old-resumes/` for structural conventions
 (section order, alignment, font/size, spacing, skills-section format,
 client-name placement) as a **separate concern from content extraction**.
 `corpus-builder` extracts what the candidate did (bullets, metrics,
@@ -68,7 +68,7 @@ detection**, not template authorship.
 ## Output
 
 Write findings to a `## Structural Observations` section appended to
-`user-data/reference/master-resume.md` (below the Technical Skills
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/master-resume.md` (below the Technical Skills
 Inventory, above Certifications), in this shape:
 
 ```markdown

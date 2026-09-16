@@ -40,7 +40,7 @@ treat them as blocking, not stylistic.
 ## Name sourcing
 
 The candidate's name, as it appears on every resume and cover letter, is
-always pulled from `user-data/reference/user-profile.md` (the `Name:`
+always pulled from `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md` (the `Name:`
 field). Never infer, abbreviate, expand, or "clean up" the name from a
 job description, an old resume filename, or general convention. If
 `user-profile.md` has no `Name:` value populated, stop and prompt the user

@@ -21,7 +21,7 @@ Every accomplishment or claim in the letter must trace to one of:
 
 No accomplishment goes in the letter without one of these two sources,
 regardless of how well it would round out the narrative. Before
-finalizing any figure, check `user-data/reference/corrections-log.md`
+finalizing any figure, check `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/corrections-log.md`
 the same way `resume-tailor` does; a corrected or retired figure there
 overrides whatever the bundle or master-resume.md currently shows.
 
@@ -91,7 +91,7 @@ section (written by `company-research`):
 - No em dashes; no unsupported superlative filler ("passionate,"
   "results-driven," "proven track record") per `skills/constraints/SKILL.md`
   and the lexical checks in `skills/ai-fingerprint-checklist/SKILL.md`.
-- Name pulled from `user-data/reference/user-profile.md`, never
+- Name pulled from `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md`, never
   hand-typed or inferred elsewhere.
 
 ## Output
@@ -99,7 +99,7 @@ section (written by `company-research`):
 - Write the sourcing plan to the session file's Cover Letter Plan
   section (above).
 - Produce the cover letter document to
-  `user-data/output/<company>_<role>/cover_letter.docx`, matching the
+  `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/cover_letter.docx`, matching the
   session file's company/role slug.
 - Hand off to `critique-agent` once both this draft and the resume draft
   are complete; do not self-critique or self-approve, and do not wait on

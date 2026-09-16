@@ -6,12 +6,12 @@ status: active
 # Job Analyzer
 
 First agent invoked by `/tailor-application <JD or URL>`, after confirming
-`user-data/reference/user-profile.md` exists and is populated. Extracts
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md` exists and is populated. Extracts
 structured requirements from the job description, selects the target
 track and bundle, maps requirements against the candidate's actual
 material, and runs closed-ended gap dialogue with the user. All output
 goes into that application's session file,
-`user-data/applications/session_<company>_<role>.md`, which this agent
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/applications/session_<company>_<role>.md`, which this agent
 creates.
 
 ## Step 1: Resolve the JD text
@@ -34,7 +34,7 @@ creates.
 
 ## Step 2: Create the session file
 
-Create `user-data/applications/session_<company>_<role>.md` immediately
+Create `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/applications/session_<company>_<role>.md` immediately
 after resolving company/title, before analysis begins, so partial
 progress is never lost. Initial structure:
 
@@ -79,7 +79,7 @@ source of truth for the application.
 Immediately after the session file is created, write a standalone Word
 document capturing the JD exactly as inputted, so the candidate has a
 portable record independent of the session file. Save it to
-`user-data/output/<company>_<role>/` (the same output folder
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/` (the same output folder
 `resume-tailor` and `coverletter-writer` will use), named:
 
 ```
@@ -160,7 +160,7 @@ to win on density alone.
    from the secondary track's bundle if the primary bundle is thin on a
    specific requirement.
 3. **If the JD's target track has no bundle** in
-   `user-data/reference/bundles/` (per `bundle-builder`'s output), stop
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/bundles/` (per `bundle-builder`'s output), stop
    and tell the user: either pick the closest existing bundle as a
    starting point (and flag every borrowed bullet clearly), or run
    `/build-reference` again after adding corpus material for that track.

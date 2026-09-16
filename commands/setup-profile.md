@@ -13,7 +13,7 @@ re-verifying it.
 
 ## Flow
 
-1. Check whether `user-data/reference/user-profile.md` already exists and
+1. Check whether `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md` already exists and
    has non-empty values in every field (see the structure in
    `agents/intake-agent.md`'s Output section).
    - If it's fully populated, tell the user what's currently on file
@@ -26,7 +26,7 @@ re-verifying it.
    in `agents/intake-agent.md` (name, phone, email, LinkedIn, location,
    target tracks ranked, certifications, standing formatting rules,
    notion_sync yes/no).
-3. `intake-agent` writes the result to `user-data/reference/user-profile.md`.
+3. `intake-agent` writes the result to `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md`.
    This command does not write to that file itself; all writing
    authority stays with `intake-agent` per its guardrails.
 4. After `intake-agent` reports completion, read the file back and show
@@ -49,7 +49,7 @@ re-verifying it.
   delegate to `intake-agent`, which owns the sourcing rules (e.g.,
   treating old-resume values as suggestions requiring confirmation, not
   auto-fill) and is the only agent permitted to write
-  `user-data/reference/user-profile.md`.
+  `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md`.
 - Re-running this command replaces the entire profile file, not just the
   fields the user wants to change; say so before re-running if the user
   only mentioned wanting to update one field.

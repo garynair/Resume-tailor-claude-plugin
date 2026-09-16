@@ -8,9 +8,9 @@ description: Mechanism for a non-negotiable register of claims the candidate can
 This file defines the **mechanism**, not the candidate's specific facts.
 The candidate's actual known gaps (e.g., specific in-progress
 certifications) and any candidate-specific pre-built framings live in a
-private, untracked file: `user-data/reference/known-gaps.md` (a sibling
+private, untracked file: `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/known-gaps.md` (a sibling
 directory to this plugin, gitignored, never committed to version control
-— the same handling every other file under `user-data/` gets). This
+— the same handling every other file under `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/` gets). This
 SKILL.md is the public, versioned description of how that private file
 is used; it intentionally contains none of the candidate's own personal
 specifics (updated 2026-09-11 — this file previously stated real
@@ -30,7 +30,7 @@ A "known gap" is a claim the candidate is uncertain about, has partial
 exposure to, or wants explicitly bounded so a JD's keyword pressure never
 pushes the agent into overstating it. Common shape: an in-progress
 credential, certification, or capability that must never be stated as
-complete. See `user-data/reference/known-gaps.md` for this candidate's
+complete. See `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/known-gaps.md` for this candidate's
 actual entries.
 
 ## Pattern: Pre-Built Framings
@@ -46,16 +46,16 @@ generating new phrasing each session. Common categories:
 - Protected metrics context (scoping a metric to its actual engagement
   rather than letting it read as a universal claim).
 
-See `user-data/reference/known-gaps.md` for this candidate's actual
+See `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/known-gaps.md` for this candidate's actual
 approved framings.
 
 ## How this gets used
 
 - `/tailor-application` checks any generated claim against
-  `user-data/reference/known-gaps.md` before drafting.
+  `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/known-gaps.md` before drafting.
 - `critique-agent` treats deviation from that file as a
   hard-fail, same tier as a protected-metric violation.
-- If `user-data/reference/known-gaps.md` doesn't exist yet, treat this as
+- If `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/known-gaps.md` doesn't exist yet, treat this as
   an empty register (no known gaps recorded), not an error — but flag it
   to the candidate once, since an unpopulated file silently provides no
   protection.

@@ -14,7 +14,7 @@ confirmations logged in past application sessions.
 
 ## Precondition
 
-Check `user-data/reference/user-profile.md` exists and has at least the
+Check `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md` exists and has at least the
 `Name:` and `Target tracks (ranked):` fields populated. If not, stop and
 direct the user to `/setup-profile` first; both `corpus-builder` and
 `bundle-builder` depend on the target-tracks list to know what to tag
@@ -23,12 +23,12 @@ and build for.
 ## Flow
 
 1. Invoke `corpus-builder`. It reads
-   `user-data/raw-corpus/old-resumes/` and
-   `user-data/raw-corpus/old-coverletters/`, cross-references and
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/raw-corpus/old-resumes/` and
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/raw-corpus/old-coverletters/`, cross-references and
    deduplicates content, and writes:
-   - `user-data/reference/master-resume.md`
-   - `user-data/reference/master-metrics-vault.md`
-   - `user-data/reference/star-story-bank.md`
+   - `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/master-resume.md`
+   - `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/master-metrics-vault.md`
+   - `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/star-story-bank.md`
 
    If the raw corpus is empty or unparseable, `corpus-builder` runs its
    structured-interview fallback instead (per its own spec); this
@@ -50,7 +50,7 @@ and build for.
    relative to `corpus-builder`, not parallel with it), invoke
    `bundle-builder`. It reads the freshly written `master-resume.md`
    and produces one `bundle-<track>.md` file per target track in
-   `user-data/reference/bundles/`.
+   `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/bundles/`.
 
 4. After `bundle-builder` and `template-extractor` both complete,
    report a summary to the user:

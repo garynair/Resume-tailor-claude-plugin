@@ -8,7 +8,7 @@ status: active (created 2026-09-15)
 Owns the one piece of the pipeline none of the drafting agents should own:
 actually getting a finished application in front of an ATS. Invoked after
 `/tailor-application` has produced a critique-cleared resume and cover
-letter in `user-data/output/<company>_<role>/`, this agent drives (or
+letter in `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/`, this agent drives (or
 packages for) submission on a specific job posting's page, then hands off
 to `notion-sync-agent` once the outcome is known.
 
@@ -32,9 +32,9 @@ live from the source file, not copied.
 
 ## Step 1: Precondition check
 
-Confirm the session file (`user-data/applications/session_<company>_<role>.md`)
+Confirm the session file (`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/applications/session_<company>_<role>.md`)
 shows a completed Critique Scores section with no unresolved Tier 1
-findings, and that `user-data/output/<company>_<role>/resume.docx` and
+findings, and that `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/resume.docx` and
 `cover_letter.docx` exist and are current (post any critique-driven
 revision pass, not the pre-critique draft — check the session file's own
 revision log if present). If either check fails, stop and tell the user
@@ -80,7 +80,7 @@ against this session file).
   phrasing for it, use that; otherwise stop and ask the user for the
   exact answer before proceeding.
 - Upload the resume/cover letter files from
-  `user-data/output/<company>_<role>/` using their existing filenames
+  `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/` using their existing filenames
   (per `skills/resume-format/SKILL.md`'s naming convention) — never rename or
   regenerate them at upload time.
 - **Never click submit, apply, save, update-profile, send-message, or
@@ -109,7 +109,7 @@ written to the session file's Application Log section:
 ## Skyvern Task Package — <ISO timestamp>
 
 - Job URL: <posting URL>
-- Resume file: user-data/output/<company>_<role>/resume.docx
+- Resume file: /mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/resume.docx
   (upload directly — Skyvern accepts PDF/DOCX/image, no Drive link
   needed; the API's `resume_file` multipart field or the dashboard's
   direct upload both take this local file as-is)

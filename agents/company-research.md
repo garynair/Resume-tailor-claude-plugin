@@ -90,7 +90,7 @@ research as a fallback.
   verification, not as letter content.
 - If the JD came through a recruiter/staffing agency for an undisclosed
   client, skip this agent entirely; there is no company to research.
-- Cache results per company for 30 days within `user-data/` (not
+- Cache results per company for 30 days within `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/` (not
   re-running this agent for a company already researched recently in
   the same job search cycle) to avoid redundant search calls across
   concurrent applications to the same employer.

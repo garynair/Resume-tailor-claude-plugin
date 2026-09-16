@@ -16,15 +16,15 @@ Loads fresh, never restates: `skills/constraints/SKILL.md` (no
 fabrication, protected metrics used verbatim, no em dashes),
 `skills/known-gaps/SKILL.md` (pre-approved phrasing for anything
 uncertain), `skills/ai-fingerprint-checklist/SKILL.md` (run before
-presenting a draft), and `user-data/reference/user-profile.md` (target
+presenting a draft), and `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md` (target
 tracks, actual current seniority — same "never claim a level or title
 higher than the candidate's real one" principle `skills/resume-format/SKILL.md`'s
 Tagline rule applies, extended here to the headline).
 
-Reads: `user-data/reference/master-resume.md`,
-`user-data/reference/master-metrics-vault.md`,
-`user-data/reference/skills/skills.json`,
-`user-data/reference/certifications/certifications.json`. Every claim in
+Reads: `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/master-resume.md`,
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/master-metrics-vault.md`,
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/skills/skills.json`,
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/certifications/certifications.json`. Every claim in
 the proposal must trace to one of these or to `user-profile.md` — no
 exceptions, LinkedIn is a public-facing document like the resume, not a
 lower-bar one.
@@ -89,7 +89,7 @@ sourced material would be worth featuring.
 
 ## Step 7: Produce the proposal document
 
-Write `user-data/output/linkedin/linkedin-optimization-<ISO date>.md`,
+Write `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/linkedin/linkedin-optimization-<ISO date>.md`,
 plain markdown (not `skills/resume-format/SKILL.md`'s formatting spec — this is a
 recommendation document, not a resume), structured as:
 

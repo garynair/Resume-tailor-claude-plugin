@@ -15,7 +15,7 @@ instead -- that command owns all narrative content per
 
 ## Step 1: Resolve inputs
 
-- If `user-data/applications/session_<company>_<role>.md` exists (a
+- If `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/applications/session_<company>_<role>.md` exists (a
   prior `/tailor-application` run for this company/role), use it as the
   primary source -- the JD and requirement mapping are already there.
 - If it doesn't exist, and the user supplied a JD or URL alongside the
@@ -26,7 +26,7 @@ instead -- that command owns all narrative content per
 
 ## Step 2: Precondition check
 
-Check `user-data/reference/user-profile.md` exists and has at least the
+Check `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/user-profile.md` exists and has at least the
 `Name:` field populated, same as `/tailor-application`. If it doesn't,
 stop and direct the user to `/setup-profile` first.
 
@@ -34,7 +34,7 @@ stop and direct the user to `/setup-profile` first.
 
 Invoke `interview-prep` with the company, role, and resolved JD source.
 It writes the process/logistics package to
-`user-data/output/<company>_<role>/interview-prep.md` and reports gaps
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/interview-prep.md` and reports gaps
 in the round/audience data explicitly rather than glossing over them.
 
 ## Step 4: Present the result

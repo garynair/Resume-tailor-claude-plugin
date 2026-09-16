@@ -13,7 +13,7 @@ file's Bullet Plan section before producing the final document.
 
 ## Build from the reference template, not from the prose spec alone
 
-`user-data/reference/template-resume.docx` is the canonical, structurally
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/template-resume.docx` is the canonical, structurally
 verified reference document for every formatting rule in
 `skills/resume-format/SKILL.md` (confirmed 2026-07-29, 7/4/3 bullet-count
 example, 2 pages, all spacing/alignment/section-order rules satisfied).
@@ -90,7 +90,7 @@ necessarily in the resume document itself):
 ## Check corrections-log.md before finalizing any figure
 
 Before a metric goes into a final bullet, check
-`user-data/reference/corrections-log.md` for that figure or the
+`/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/reference/corrections-log.md` for that figure or the
 underlying claim. If the figure has been retired or corrected there, use
 the corrected value (or omit the claim if it was retired outright), even
 if `master-resume.md` or the bundle still shows the old number (bundles
@@ -291,7 +291,7 @@ carried forward into the report's first list unchanged (see below).
   list is this agent's own finding from the coverage check above.
 - Produce the resume document itself (per the docx skill and
   `skills/resume-format/SKILL.md`) to
-  `user-data/output/<company>_<role>/resume.docx` (create the folder if
+  `/mnt/d/CLAUDE/Resume-Tailor-Claude/user-data/output/<company>_<role>/resume.docx` (create the folder if
   needed, matching the session file's company/role slug).
 - Hand off to `critique-agent` only after `coverletter-writer` also
   completes (per `/tailor-application`'s flow); do not self-critique or
